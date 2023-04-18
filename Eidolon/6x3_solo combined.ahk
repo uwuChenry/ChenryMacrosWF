@@ -27,6 +27,14 @@ CoordMode, Pixel, Screen
 
 ;-------------------------- CAP FPS MACRO --------------------------
 
+CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default value can be optionally overridden
+	ToolTip, %text%, A_ScreenWidth/2, A_ScreenHeight/2
+	SetTimer, RemoveToolTip, -%duration% ; Negative to only trigger once
+}
+RemoveToolTip(){
+	ToolTip
+}
+
 ;NumpadMult::
 ;	Gosub, LightCap
 ;Return
@@ -87,14 +95,18 @@ Return
 
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
-/*
+
 h::	
 	CoordMode, Pixel, Screen
 	loop { 
-		PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
+		PixelSearch, PX, PY, 1030, 865, 1080, 915, 0xCFEEFF, 14, Fast RGB ; 113 112 180 Detect if shard has appeared
+		;PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
 	} until (ErrorLevel == 0)
-	DllCall("SetCursorPos", "int", PX, "int", PY)
+	CenteredToolTip("pog")
+	;DllCall("SetCursorPos", "int", PX, "int", PY)
 Return
-;PixelSearch, PX, PY, 988, 548, 1151, 678, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
+;0xCFEEFF rgb
+;0xC0E4Fc rgb 
+;PixelSearch, PX, PY, 988, 548, 1151, 678, 0xC8EAFF, 14, Fast ; 113 112 180 Detect if shard has appeared
 ; PixelSearch, PX, PY, 420, 433, 459, 458, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
 ;PixelSearch, PX, PY, 270, 520, 300, 570, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
