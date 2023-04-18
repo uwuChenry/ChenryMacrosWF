@@ -1,17 +1,12 @@
 global CurrentLoopSubroutine := "LoopSoloTerry"
 global SavedLoopSubroutine := ""
 global SavedDetector := ""
-global LimbsLeft := 4
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
-; global PreviousManualSubroutine := ""
-; global TimeToSleep := 0
-; global ManualSubroutine := ""
-; global ListOfSubroutinesGoTo := ["ManualPPZ", "ManualPPZ", "ManualPPZ", "ManualPPZ"]
 
 ;-------------------------- LIMB MACROS --------------------------
 
-global fps := 300
+global fps := 330
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
 
@@ -28,27 +23,7 @@ Q::
 	SendInput {e}
 	lSleep(220)
 	SendInput, 5
-	; lSleep(150)
-	; SendInput {Ctrl Down}
 Return
-
-; ManualPR:
-; 	SendInput {MButton}
-; 	lSleep(1585)
-; 	SendInput {LButton}
-; 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-; Return
-
-; ManualPZ:
-; 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
-; 	SendInput {MButton}
-; 	DllCall("Kernel32\Sleep", "UInt", 50)
-; 	Gosub, MeleeSwapIntoWarframeWithVigSwapAndAniCancel
-; 	lWin32Sleep(1610, FirstPropaMoment) ;1610
-; 	SendInput {LButton}
-; 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-; 	SendInput {RButton up}
-; Return
 
 ManualPPZ:
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
@@ -120,7 +95,7 @@ LoopSoloTerry:
 Return
 
 
-LoopSoloGarry: ; PPRZ -> PPRZ -> VS -> PPRZ -> VS 
+LoopSoloGarry: 
 	loop 4 {
 		Gosub, ManualPPRZ
 		Sleep 12000
@@ -137,7 +112,7 @@ Return
 
 
 
-LoopSoloHarry: ; LAST GASP -> LAST GASP -> VS -> LAST GASP -> VS
+LoopSoloHarry: 
 	loop 4 {
 		Gosub, ManualPPRZ
 		Sleep 12000

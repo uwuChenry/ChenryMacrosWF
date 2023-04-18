@@ -17,38 +17,28 @@ ShrineToCl:
 	; } until (ErrorLevel == 0)
 	; Critical, Off
 	; ;*/
-	DllCall("mouse_event", uint, 1, int, -750, int, 110, uint, 0, int, 0)
+	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0)
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {Space down}
 	lSaveCounterAfterSleep(80, LastPerformanceCounter)
 	SendInput {Space up}  
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-	DllCall("mouse_event", uint, 1, int, 0, int, 60, uint, 0, int, 0) ; Face downward
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	;DllCall("mouse_event", uint, 1, int, 0, int, 60, uint, 0, int, 0) ; Face downward
+	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {t} ; Dash to CL
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {e} ; Melee
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-	;SendInput {w down} ; Move forward
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {5} ; Operator
 	lSaveCounterAfterSleep(130, LastPerformanceCounter)
 	SendInput {MButton} ; Propa
-	;SendInput {w up}
 	lSleep(40, LastPerformanceCounter)
-	DllCall("mouse_event", uint, 1, int, 1900, int, 475, uint, 0, int, 0) ; Aim at limb
+	DllCall("mouse_event", uint, 1, int, 1850, int, 625, uint, 0, int, 0) ; Aim at limb
 	SendInput {1} ; VS
-	lWin32Sleep(720, LastPerformanceCounter)
+	lWin32Sleep(700, LastPerformanceCounter)
 	SendInput {e} ; Melee into warframe
-	lWin32Sleep(820, LastPerformanceCounter)
+	lWin32Sleep(800, LastPerformanceCounter)
 	SendInput {z} ; Archwing
-	lWin32Sleep(1800, LastPerformanceCounter) ; Fire zenith at 1800ms after Propa (Lowest I've achieved is 1770)
-	SendInput {LButton}
-	Sleep, 20
-	SendInput {LButton}
-	Sleep, 20
-	SendInput {LButton}
-	Sleep, 20
+	lWin32Sleep(1770, LastPerformanceCounter) ; Fire zenith at 1800ms after Propa (Lowest I've achieved is 1770)
 	SendInput {LButton}
 Return
 
