@@ -1,6 +1,23 @@
 ﻿;-------------------------- INCLUDED LIBRARIES --------------------------
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to asist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
+#Persistent
+#InstallKeybdHook
+#InstallMouseHook
+#KeyHistory 0
+ListLines Off
+SetBatchLines -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1, -1
+SetControlDelay -1
+SetWinDelay -1
+#MaxHotkeysPerInterval 100000
+Process, Priority,, High
 
-#include OverclockAHK.ahk
+
 #include SleepFunctions.ahk
 
 ;#include CapFPS.ahk
@@ -78,6 +95,6 @@ h::
 	} until (ErrorLevel == 0)
 	DllCall("SetCursorPos", "int", PX, "int", PY)
 Return
-
+;PixelSearch, PX, PY, 988, 548, 1151, 678, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
 ; PixelSearch, PX, PY, 420, 433, 459, 458, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
 ;PixelSearch, PX, PY, 270, 520, 300, 570, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared

@@ -22,11 +22,11 @@ global EmoteOffset := 60
 #IfWinActive Warframe
 Q::
 	SendInput {RButton Down}
-	lSleep(80)	
+	lSleep(70)	
 	SendInput {RButton Up}
 	lSleep(10)
 	SendInput {e}
-	lSleep(230)
+	lSleep(220)
 	SendInput, 5
 	; lSleep(150)
 	; SendInput {Ctrl Down}
@@ -54,7 +54,7 @@ ManualPPZ:
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
 	SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 530)
-	SendInput {MButton}
+	;SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 50)
 	Gosub, MeleeSwapIntoWarframeWithVigSwapAndAniCancel
 	lWin32Sleep(1610, FirstPropaMoment) ;1610
@@ -112,7 +112,7 @@ LoopSoloTerry:
 			StopLoop := False
 			Exit
 		}
-		lSleep(15579, LastLimbDestroyedTiming) ; 17186 - 1610 + 1 = 15577
+		lSleep(15577, LastLimbDestroyedTiming) ; 17186 - 1610 + 1 = 15577
 	}
 	Gosub, ManualPPZ
 	CurrentLoopSubroutine := "LoopSoloGarry"

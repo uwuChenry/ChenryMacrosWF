@@ -36,7 +36,7 @@ ShrineToCl:
 	SendInput {MButton} ; Propa
 	;SendInput {w up}
 	lSleep(40, LastPerformanceCounter)
-	DllCall("mouse_event", uint, 1, int, 1900, int, 455, uint, 0, int, 0) ; Aim at limb
+	DllCall("mouse_event", uint, 1, int, 1900, int, 475, uint, 0, int, 0) ; Aim at limb
 	SendInput {1} ; VS
 	lWin32Sleep(720, LastPerformanceCounter)
 	SendInput {e} ; Melee into warframe
