@@ -165,4 +165,7 @@ MeleeSwapIntoWarframeWithVigSwapAndAniCancel:
 	;SendInput {RButton down}
 Return
 
+^Q::
+	SendInput, test
+Return
 
