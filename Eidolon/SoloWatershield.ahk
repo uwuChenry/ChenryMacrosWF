@@ -9,14 +9,12 @@ Return
 
 
 ShrineToCl:
-	; ;/*
 	; Critical, On
 	; loop {
 	; 	SendInput {x}
 	; 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	; } until (ErrorLevel == 0)
 	; Critical, Off
-	; ;*/
 	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) 
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {Space down}
@@ -37,7 +35,7 @@ ShrineToCl:
 	SendInput {e} 
 	lWin32Sleep(800, LastPerformanceCounter)
 	SendInput {z} 
-	lWin32Sleep(1770, LastPerformanceCounter) ; Fire zenith at 1800ms after Propa (Lowest I've achieved is 1770)
+	lWin32Sleep(1770, LastPerformanceCounter) ; 1800m 1770
 	SendInput {LButton}
 Return
 
