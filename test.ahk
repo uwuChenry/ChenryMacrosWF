@@ -21,9 +21,8 @@ CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default 
 	CoordMode, Pixel, Screen
 	loop { 
 		;SendInput, x
-		pixelSearch, PX, PY, 1080, 860, 1120, 900, 0xC6EAFF, 14, Fast RGB ; Detect if shard has appeared
-		;pixelSearch, PX, PY, 520, 700, 560, 740, 0xCFEEFF, 0, Fast RGB ; Detect if shard has appeared
-		;PixelSearch, PX, PY, 1030, 865, 1080, 915, 0xCFEEFF, 14, Fast RGB ; Detect if shard has appeared
+		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
+		;pixelSearch, PX, PY, 1080, 860, 1120, 900, 0xC6EAFF, 14, Fast RGB ; Detect if shard has appeared
 		;PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
 	} until (ErrorLevel == 0)
 	MsgBox, pog

@@ -13,31 +13,30 @@ ShrineToCl:
 	; Critical, On
 	; loop {
 	; 	SendInput {x}
-	; 	PixelSearch, PX, PY, 400, 413, 479, 478, 0x3845CA, 10, Fast ; Detect if shard has appeared
+	; 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	; } until (ErrorLevel == 0)
 	; Critical, Off
 	; ;*/
-	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0)
+	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) 
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {Space down}
 	lSaveCounterAfterSleep(80, LastPerformanceCounter)
 	SendInput {Space up}  
-	;DllCall("mouse_event", uint, 1, int, 0, int, 60, uint, 0, int, 0) ; Face downward
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
-	SendInput {t} ; Dash to CL
+	SendInput {t} 
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
-	SendInput {e} ; Melee
+	SendInput {e} 
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-	SendInput {5} ; Operator
+	SendInput {5} 
 	lSaveCounterAfterSleep(130, LastPerformanceCounter)
-	SendInput {MButton} ; Propa
+	SendInput {MButton} 
 	lSleep(40, LastPerformanceCounter)
 	DllCall("mouse_event", uint, 1, int, 1850, int, 625, uint, 0, int, 0) ; Aim at limb
-	SendInput {1} ; VS
+	SendInput {1} 
 	lWin32Sleep(700, LastPerformanceCounter)
-	SendInput {e} ; Melee into warframe
+	SendInput {e} 
 	lWin32Sleep(800, LastPerformanceCounter)
-	SendInput {z} ; Archwing
+	SendInput {z} 
 	lWin32Sleep(1770, LastPerformanceCounter) ; Fire zenith at 1800ms after Propa (Lowest I've achieved is 1770)
 	SendInput {LButton}
 Return
