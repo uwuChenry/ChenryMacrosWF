@@ -165,7 +165,6 @@ ClToMidGarry:
 	lSleep(80)
 	SendInput {Mbutton}
 	lSleep(20)
-	SendInput {J}
 	lSleep(20)
 	SendInput {e}
 	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
