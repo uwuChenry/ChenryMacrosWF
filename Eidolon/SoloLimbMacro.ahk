@@ -4,15 +4,9 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-;-------------------------- LIMB MACROS --------------------------
-
 global fps := 330
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
-
-
-;--- MANUAL MACROS ---
-
 
 #IfWinActive Warframe
 Q::
@@ -21,7 +15,7 @@ Q::
 	SendInput {RButton Up}
 	lSleep(10)
 	SendInput {e}
-	lSleep(220)
+	lSleep(240)
 	SendInput, 5
 Return
 
@@ -31,7 +25,7 @@ ManualPPZ:
 	DllCall("Kernel32\Sleep", "UInt", 530)
 	;SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 50)
-	Gosub, MeleeSwapIntoWarframeWithVigSwapAndAniCancel
+	Gosub, MeleeSwapIntoFrame
 	lWin32Sleep(1610, FirstPropaMoment) ;1610
 	SendInput {LButton}
 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
@@ -127,13 +121,7 @@ LoopSoloHarry:
 	CurrentDetector := ""
 Return
 
-;-- SWAP MACROS ---
-
-MeleeSwapIntoWarframe:
-	SendInput {e}
-Return
-
-MeleeSwapIntoWarframeWithVigSwapAndAniCancel:
+MeleeSwapIntoFrame:
 	SendInput {e}
 	DllCall("Kernel32\Sleep", "UInt", 20)
 	SendInput {Del}

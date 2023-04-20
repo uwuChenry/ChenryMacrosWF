@@ -1,6 +1,4 @@
-﻿
-
-#Include OverclockAHK.ahk
+﻿#Include OverclockAHK.ahk
 #include SleepFunctions.ahk
 #include SoloLimbMacro.ahk
 #include SoloWatershield.ahk
@@ -27,9 +25,9 @@ Return
 
 ; ;---CL TO CR---
 
-; 8::
-; 	Gosub, ClToCr
-; Return
+8::
+	Gosub, ClToCr
+Return
 
 ; ;---CL TO MID---
 
@@ -44,15 +42,6 @@ Return
 ; 	Gosub, ClToLong
 ; Return
 
-;-------------------------- SPAM SPACEBAR MACRO --------------------------
-
-; XButton2::
-; 	while GetKeyState("XButton2","P")
-; 		{
-; 			SendInput {Space}
-; 			DllCall("Kernel32\Sleep", "UInt", 55)
-; 		}
-; Return
 
 ;-------------------------- LIMB MACROS --------------------------
 
@@ -73,19 +62,38 @@ Return
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 
-^1::	
-	CenteredToolTip("test")
-	; CoordMode, Pixel, Screen
-	; CenteredToolTip("pog")
-	; loop { 
-	; 	PixelSearch, PX, PY, 1030, 865, 1080, 915, 0xCFEEFF, 14, Fast RGB ; 113 112 180 Detect if shard has appeared
-	; 	;PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
+!3::	
+	loop {
+		PixelSearch, PX, PY, 860, 440, 1060, 640, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
+	} until (ErrorLevel == 0)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	DllCall("Kernel32\Sleep", "UInt", 30)
+	loop {
+		PixelSearch, PX, PY, 900, 480, 1020, 600, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
+	} until (ErrorLevel == 0)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	DllCall("Kernel32\Sleep", "UInt", 30)
+	loop {
+		PixelSearch, PX, PY, 920, 500, 1000, 580, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
+	} until (ErrorLevel == 0)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	DllCall("Kernel32\Sleep", "UInt", 30)
+	loop {
+		PixelSearch, PX, PY, 940, 520, 980, 560, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
+	} until (ErrorLevel == 0)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	DllCall("Kernel32\Sleep", "UInt", 30)
+
+	; loop {
+	; 	PixelSearch, PX, PY, 900, 480, 1020, 600, 0x42a263, 0, Fast RGB ; Lock on to loc-pin
 	; } until (ErrorLevel == 0)
-	; CenteredToolTip("pog")
-	;DllCall("SetCursorPos", "int", PX, "int", PY)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-960)*1, "UInt", (PY-540)*1)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
+
+	; loop {
+	; 	PixelSearch, PX, PY, 920, 500, 1000, 580, 0x42a263, 0, Fast RGB; Lock on to loc-pin
+	; } until (ErrorLevel == 0)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-960)*1, "UInt", (PY-540)*1)
+	CenteredToolTip("test")
 Return
-;0xCFEEFF rgb
-;0xC0E4Fc rgb 
-;PixelSearch, PX, PY, 988, 548, 1151, 678, 0xC8EAFF, 14, Fast ; 113 112 180 Detect if shard has appeared
-; PixelSearch, PX, PY, 420, 433, 459, 458, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
-;PixelSearch, PX, PY, 270, 520, 300, 570, 0x7170B4, 14, Fast ; 113 112 180 Detect if shard has appeared
+

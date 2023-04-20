@@ -12,7 +12,7 @@ ShrineToCl:
 	; Critical, On
 	; loop {
 	; 	SendInput {x}
-	; 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
+	; 	pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	; } until (ErrorLevel == 0)
 	; Critical, Off
 	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) 
@@ -22,20 +22,20 @@ ShrineToCl:
 	SendInput {Space up}  
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {t} 
+	DllCall("mouse_event", uint, 1, int, 1850, int, 0, uint, 0, int, 0) ; Aim at limb
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {e} 
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {5} 
 	lSaveCounterAfterSleep(130, LastPerformanceCounter)
 	SendInput {MButton} 
-	lSleep(40, LastPerformanceCounter)
-	DllCall("mouse_event", uint, 1, int, 1850, int, 625, uint, 0, int, 0) ; Aim at limb
 	SendInput {1} 
-	lWin32Sleep(700, LastPerformanceCounter)
+	DllCall("mouse_event", uint, 1, int, 0, int, 670, uint, 0, int, 0) ; Aim at limb
+	lWin32Sleep(675, LastPerformanceCounter)
 	SendInput {e} 
-	lWin32Sleep(800, LastPerformanceCounter)
+	lWin32Sleep(715, LastPerformanceCounter)
 	SendInput {z} 
-	lWin32Sleep(1770, LastPerformanceCounter) ; 1800m 1770
+	lWin32Sleep(1640, LastPerformanceCounter) ; 1800m 1770
 	SendInput {LButton}
 Return
 
@@ -118,66 +118,66 @@ Return
 
 ; ;---CL TO CR---
 
-; ClToCr:
-; 	DllCall("mouse_event", uint, 1, int, -79, int, 195, uint, 0, int, 0) ; Start getting closer so macro can lock on and still be accurate in landing position
-; 	;/*
-; 	lSleep(10)
-; 	SendInput {LShift down}
-; 	SendInput {Space down}
-; 	SendInput {w down}
-; 	lWin32Sleep(180) ; Just right
-; 	SendInput {w up}
-; 	SendInput {Space up}
-; 	SendInput {s down}
-; 	SendInput {LCtrl down}
-; 	lWin32Sleep(79)
-; 	SendInput {s up}
-; 	SendInput {LCtrl up}
-; 	SendInput {LShift up}
-; 	;DllCall("mouse_event", uint, 1, int, -59, int, 200, uint, 0, int, 0) ; Aim at loc-pin for lock on
-; 	lWin32Sleep(50) ; Don't let it lock on too fast while archwing still moving (need testing)
-; 	loop {
-; 		PixelSearch, PX, PY, 540, 260, 740, 460, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
-; 	} until (ErrorLevel == 0)
-; 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.2, "UInt", (PY-360)*1.2)
-; 	DllCall("Kernel32\Sleep", "UInt", 30)
-; 	loop {
-; 		PixelSearch, PX, PY, 580, 300, 700, 420, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
-; 	} until (ErrorLevel == 0)
-; 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.2, "UInt", (PY-360)*1.2)
-; 	DllCall("Kernel32\Sleep", "UInt", 30)
-; 	loop {
-; 		PixelSearch, PX, PY, 600, 320, 680, 400, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
-; 	} until (ErrorLevel == 0)
-; 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.25, "UInt", (PY-360)*1.25)
-; 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
-; 	lSaveCounterAfterSleep(30, LastPerformanceCounter)
-; 	SendInput {LShift down}
-; 	SendInput {w down}
-; 	lSaveCounterAfterSleep(90, LastPerformanceCounter) ; Later than this and you risk knocking onto floor before slam melee
-; 	SendInput {e}
-; 	SendInput {w up}
-; 	SendInput {LShift up}
-; 	; SendInput {Home} ; Uncap fps
-; 	lSaveCounterAfterSleep(150, LastPerformanceCounter) ; Earlier and you risk transference before slam
-; 	DllCall("mouse_event", uint, 1, int, -1700, int, 300, uint, 0, int, 0) ; Aim propa
-; 	SendInput {5}
-; 	lSaveCounterAfterSleep(170, LastPerformanceCounter) ; Earlier and operator cant shoot propa
-; 	SendInput {y}
-; 	lSaveCounterAfterSleep(50, LastPerformanceCounter) ; Don't let warframe insta det propa
-; 	DllCall("mouse_event", uint, 1, int, -3010, int, -710, uint, 0, int, 0) ; Aim zenith
-; 	SendInput {e}
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {]}
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {Numpad1 down}
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	loop 5{
-; 		SendInput {Numpad0}
-; 		DllCall("Kernel32\Sleep", "UInt", 200)
-; 	}
-; 	SendInput {Numpad1 up} 
-; Return	
+ClToCr:
+	DllCall("mouse_event", uint, 1, int, -79, int, -455, uint, 0, int, 0) ; Start getting closer so macro can lock on and still be accurate in landing position
+	;/*
+	; lSleep(10)
+	; SendInput {LShift down}
+	; SendInput {Space down}
+	; SendInput {w down}
+	; lWin32Sleep(180) ; Just right
+	; SendInput {w up}
+	; SendInput {Space up}
+	; SendInput {s down}
+	; SendInput {LCtrl down}
+	; lWin32Sleep(79)
+	; SendInput {s up}
+	; SendInput {LCtrl up}
+	; SendInput {LShift up}
+	; ;DllCall("mouse_event", uint, 1, int, -59, int, 200, uint, 0, int, 0) ; Aim at loc-pin for lock on
+	; lWin32Sleep(50) ; Don't let it lock on too fast while archwing still moving (need testing)
+	; ; loop {
+	; ; 	PixelSearch, PX, PY, 540, 260, 740, 460, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
+	; ; } until (ErrorLevel == 0)
+	; ; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.2, "UInt", (PY-360)*1.2)
+	; ; DllCall("Kernel32\Sleep", "UInt", 30)
+	; ; loop {
+	; ; 	PixelSearch, PX, PY, 580, 300, 700, 420, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
+	; ; } until (ErrorLevel == 0)
+	; ; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.2, "UInt", (PY-360)*1.2)
+	; ; DllCall("Kernel32\Sleep", "UInt", 30)
+	; ; loop {
+	; ; 	PixelSearch, PX, PY, 600, 320, 680, 400, 0xFFFFFF, 0, Fast ; Lock on to loc-pin
+	; ; } until (ErrorLevel == 0)
+	; ; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-640)*1.25, "UInt", (PY-360)*1.25)
+	; DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
+	; lSaveCounterAfterSleep(30, LastPerformanceCounter)
+	; SendInput {LShift down}
+	; SendInput {w down}
+	; lSaveCounterAfterSleep(90, LastPerformanceCounter) ; Later than this and you risk knocking onto floor before slam melee
+	; SendInput {e}
+	; SendInput {w up}
+	; SendInput {LShift up}
+	; ; SendInput {Home} ; Uncap fps
+	; lSaveCounterAfterSleep(150, LastPerformanceCounter) ; Earlier and you risk transference before slam
+	; DllCall("mouse_event", uint, 1, int, -1700, int, 300, uint, 0, int, 0) ; Aim propa
+	; SendInput {5}
+	; lSaveCounterAfterSleep(170, LastPerformanceCounter) ; Earlier and operator cant shoot propa
+	; SendInput {y}
+	; lSaveCounterAfterSleep(50, LastPerformanceCounter) ; Don't let warframe insta det propa
+	; DllCall("mouse_event", uint, 1, int, -3010, int, -710, uint, 0, int, 0) ; Aim zenith
+	; SendInput {e}
+	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	; SendInput {]}
+	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	; SendInput {Numpad1 down}
+	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	; loop 5{
+	; 	SendInput {Numpad0}
+	; 	DllCall("Kernel32\Sleep", "UInt", 200)
+	; }
+	; SendInput {Numpad1 up} 
+Return	
 
 ; ;---CL TO MID---
 
