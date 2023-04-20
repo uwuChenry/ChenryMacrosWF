@@ -31,10 +31,10 @@ Return
 
 ; ;---CL TO MID---
 
-; 9::
-; 	;Gosub, ClToMidGarry
-; 	Gosub, ClToMidHarry
-; Return
+9::
+	Gosub, ClToMidGarry
+	;Gosub, ClToMidHarry
+Return
 
 ; ;--CL TO LONG---
       
