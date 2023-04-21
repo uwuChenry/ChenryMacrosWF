@@ -16,7 +16,7 @@ CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default 
 
 
 ^1::
-	MsgBox, test
+	MsgBox, test1
 	;CenteredToolTip("test")
 	CoordMode, Pixel, Screen
 	loop { 
@@ -32,6 +32,18 @@ CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default 
 	CenteredToolTip(PY)
 	;1040 860 ;0xCFEEFF
 Return
+
+^2::
+	MsgBox, test2
+	CoordMode, Pixel, Screen
+	Loop, {
+		ImageSearch, PX, PY, 0, 0, 1920, 1080, *15 *TransBlack test7.png
+	} until (ErrorLevel == 0)
+	MsgBox, pog
+	DllCall("SetCursorPos", "int", PX, "int", PY)
+	CenteredToolTip(PX)
+	Sleep, 1000
+	CenteredToolTip(PY)
 
 ^4::
     Reload
