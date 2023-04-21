@@ -9,6 +9,9 @@ global fps := 330
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
 
+asd:
+Return
+
 #IfWinActive Warframe
 Q::
 	SendInput {RButton Down}
@@ -54,9 +57,9 @@ Return
 
 ; ;--CL TO LONG---
       
-; 0:: 
-; 	Gosub, ClToLong
-; Return
+0:: 
+	Gosub, ClToLong
+Return
 
 
 ;-------------------------- LIMB MACROS --------------------------

@@ -4,7 +4,8 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-
+asdf:
+Return
 
 ManualPPZ:
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
