@@ -5,6 +5,22 @@
 CoordMode, Pixel, Screen
 
 
+global fps := 330
+global ZenithShot := 8000/fps
+global EmoteOffset := 60
+
+#IfWinActive Warframe
+Q::
+	SendInput {RButton Down}
+	lSleep(70)	
+	SendInput {RButton Up}
+	lSleep(10)
+	SendInput {e}
+	lSleep(240)
+	SendInput, 5
+Return
+
+
 CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default value can be optionally overridden
 	ToolTip, %text%, A_ScreenWidth/2, A_ScreenHeight/2
 	SetTimer, RemoveToolTip, -%duration% ; Negative to only trigger once
@@ -83,17 +99,6 @@ Return
 	} until (ErrorLevel == 0)
 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
 	DllCall("Kernel32\Sleep", "UInt", 30)
-
-	; loop {
-	; 	PixelSearch, PX, PY, 900, 480, 1020, 600, 0x42a263, 0, Fast RGB ; Lock on to loc-pin
-	; } until (ErrorLevel == 0)
-	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-960)*1, "UInt", (PY-540)*1)
-	; DllCall("Kernel32\Sleep", "UInt", 30)
-
-	; loop {
-	; 	PixelSearch, PX, PY, 920, 500, 1000, 580, 0x42a263, 0, Fast RGB; Lock on to loc-pin
-	; } until (ErrorLevel == 0)
-	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-960)*1, "UInt", (PY-540)*1)
-	CenteredToolTip("test")
+	;CenteredToolTip("test")
 Return
 

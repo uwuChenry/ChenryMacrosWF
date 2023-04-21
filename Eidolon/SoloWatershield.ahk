@@ -162,11 +162,19 @@ ClToMidGarry:
 	lSleep(150)
 	SendInput {5}
 	SendInput {LShift Up}
-	lSleep(80)
+	lSleep(170)
 	SendInput {Mbutton}
-	lSleep(20)
-	lSleep(20)
+	lSleep(50)
+	DllCall("mouse_event", uint, 1, int, 0, int, 1215, uint, 0, int, 0) ; turn around & lookdown
 	SendInput {e}
+	;DllCall("mouse_event", uint, 1, int, 0, int, 1215, uint, 0, int, 0) ;
+	lSleep(20)
+	SendInput {j}
+	lSleep(20)
+	DllCall("mouse_event", uint, 1, int, 0, int, 1215, uint, 0, int, 0) ; look at limb
+	SendInput {LButton}
+
+	
 	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	; SendInput {Del}
 	; lSaveCounterAfterSleep(20, LastPerformanceCounter)

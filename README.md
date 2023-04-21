@@ -11,4 +11,6 @@ SSD: gen 4 m.2 nvme 7300 read 6000 write
 GPU: 3080 FE (undervolted)
 
 FPS: 300-400
-Settings: everything low + enchanced engine + higher shader quality + high texture memory
+Graphic Settings: everything low + enchanced engine + higher shader quality + high texture memory
+
+Sens: in game 2, 2, 2 + 1800 dpi

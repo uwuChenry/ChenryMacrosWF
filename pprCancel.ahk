@@ -86,12 +86,10 @@ lSaveCounterAfterSleep(s_time, ByRef start) {
 
 #IfWinActive Warframe
 XButton1::
-	;DllCall("Kernel32\Sleep", "UInt", 80)
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
 	SendInput {MButton}
-	DllCall("Kernel32\Sleep", "UInt", 530) ; Equivalent to Sleep 530 
+	DllCall("Kernel32\Sleep", "UInt", 530) 
 	SendInput {MButton}
-	;lSleep(1610, FirstPropaMoment) ; Garry fps is higher since no need grab lures so 1607
 	lSleep(1585, FirstPropaMoment)
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {LButton}
@@ -110,13 +108,11 @@ return
 
 #IfWinActive Warframe
 ^XButton1::
-	;DllCall("Kernel32\Sleep", "UInt", 80)
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
 	SendInput {MButton}
-	DllCall("Kernel32\Sleep", "UInt", 530) ; Equivalent to Sleep 530 
+	DllCall("Kernel32\Sleep", "UInt", 530) 
 	SendInput {MButton}
-	;lSleep(1610, FirstPropaMoment) ; Garry fps is higher since no need grab lures so 1607
-	lSleep(1600, FirstPropaMoment)
+	lSleep(1585, FirstPropaMoment)
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {LButton}
 	lSaveCounterAfterSleep(15, LastPerformanceCounter)

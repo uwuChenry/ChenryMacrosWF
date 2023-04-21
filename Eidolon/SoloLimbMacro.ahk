@@ -4,20 +4,7 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-global fps := 330
-global ZenithShot := 8000/fps
-global EmoteOffset := 60
 
-#IfWinActive Warframe
-Q::
-	SendInput {RButton Down}
-	lSleep(70)	
-	SendInput {RButton Up}
-	lSleep(10)
-	SendInput {e}
-	lSleep(240)
-	SendInput, 5
-Return
 
 ManualPPZ:
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
