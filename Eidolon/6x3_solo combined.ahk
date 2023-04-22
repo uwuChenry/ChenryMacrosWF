@@ -1,25 +1,9 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to asist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance Force
-#Persistent
-#InstallKeybdHook
-#InstallMouseHook
-#KeyHistory 0
-ListLines Off
-SetBatchLines -1
-SetKeyDelay, -1, -1
-SetMouseDelay, -1, -1
-SetControlDelay -1
-SetWinDelay -1
-#MaxHotkeysPerInterval 100000
-Process, Priority,, High
+﻿
 
-
+#Include OverclockAHK.ahk
 #include SleepFunctions.ahk
 #include SoloLimbMacro.ahk
-#Include SleepFunctionsTwo.ahk
+;#Include SleepFunctionsTwo.ahk
 #include SoloWatershield.ahk
 CoordMode, Pixel, Screen
 
@@ -29,25 +13,25 @@ CoordMode, Pixel, Screen
 asd:
 Return
 
-#IfWinActive Warframe
-Q::
-	SendInput {RButton Down}
-	lWin32Sleep(70)	
-	SendInput {RButton Up}
-	lWin32Sleep(10)
-	SendInput {e}
-	lWin32Sleep(260)
-	SendInput, 5
-Return
+; #IfWinActive Warframe
+; Q::
+; 	SendInput {RButton Down}
+; 	lWin32Sleep(70)	
+; 	SendInput {RButton Up}
+; 	lWin32Sleep(10)
+; 	SendInput {e}
+; 	lWin32Sleep(260)
+; 	SendInput, 5
+; Return
 
 
-CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default value can be optionally overridden
-	ToolTip, %text%, A_ScreenWidth/2, A_ScreenHeight/2
-	SetTimer, RemoveToolTip, -%duration% ; Negative to only trigger once
-}
-RemoveToolTip(){
-	ToolTip
-}
+; CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default value can be optionally overridden
+; 	ToolTip, %text%, A_ScreenWidth/2, A_ScreenHeight/2
+; 	SetTimer, RemoveToolTip, -%duration% ; Negative to only trigger once
+; }
+; RemoveToolTip(){
+; 	ToolTip
+; }
 
 
 ;-------------------------- SOLO WATERSHIELD MACROS --------------------------

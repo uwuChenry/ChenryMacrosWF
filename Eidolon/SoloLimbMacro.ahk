@@ -1,20 +1,3 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to asist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance Force
-#Persistent
-#InstallKeybdHook
-#InstallMouseHook
-#KeyHistory 0
-ListLines Off
-SetBatchLines -1
-SetKeyDelay, -1, -1
-SetMouseDelay, -1, -1
-SetControlDelay -1
-SetWinDelay -1
-#MaxHotkeysPerInterval 100000
-Process, Priority,, High
 
 
 
@@ -27,9 +10,9 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-global fps := 300
-global ZenithShot := 8000/fps
-global EmoteOffset := 60
+; global fps := 300
+; global ZenithShot := 8000/fps
+; global EmoteOffset := 60
 
 asdf:
 Return
@@ -47,40 +30,40 @@ ManualPPZ:
 Return
 
 
-ManualPPRZ: 
-	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-	SendInput {MButton}
-	DllCall("Kernel32\Sleep", "UInt", 530)
-	;SendInput {MButton}
-	lSleep(1585, FirstPropaMoment)
-	SendInput {LButton Down}
-	SendInput {e}
-	lSleep(ZenithShot+EmoteOffset)
-	SendInput {LButton Up}
-	SendInput {Del}
-	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-Return
-
 ; ManualPPRZ: 
 ; 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
 ; 	SendInput {MButton}
-; 	DllCall("Kernel32\Sleep", "UInt", 530) ; Equivalent to Sleep 530 
-; 	SendInput {MButton}
-; 	lSleep(1585, FirstPropaMoment) ; Garry fps is higher since no need grab lures so 1607
-; 	DllCall("QueryPerformanceCounter"e "Int64*", LastPerformanceCounter)
-; 	SendInput {LButton}
-; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+; 	DllCall("Kernel32\Sleep", "UInt", 530)
+; 	;SendInput {MButton}
+; 	lSleep(1585, FirstPropaMoment)
+; 	SendInput {LButton Down}
 ; 	SendInput {e}
-; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+; 	lSleep(ZenithShot+EmoteOffset)
+; 	SendInput {LButton Up}
 ; 	SendInput {Del}
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {RButton down} 
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {LButton}
 ; 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
-; 	SendInput {RButton up}
 ; Return
+
+ManualPPRZ: 
+	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+	SendInput {MButton}
+	DllCall("Kernel32\Sleep", "UInt", 530) ; Equivalent to Sleep 530 
+	SendInput {MButton}
+	lSleep(1585, FirstPropaMoment) ; Garry fps is higher since no need grab lures so 1607
+	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
+	SendInput {LButton}
+	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+	SendInput {e}
+	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+	SendInput {Del}
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	SendInput {RButton down} 
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	SendInput {LButton}
+	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+	SendInput {RButton up}
+Return
 
 
 
@@ -112,7 +95,7 @@ LoopSoloGarry:
 			StopLoop := False
 			Exit
 		}
-		lSleep(15696, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+		lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
 	}
 	Gosub, ManualPPRZ
 	CurrentLoopSubroutine := "LoopSoloHarry"
@@ -129,7 +112,7 @@ LoopSoloHarry:
 			StopLoop := False
 			Exit
 		}
-		lSleep(15696, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+		lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
 	}
 	Gosub, ManualPPRZ
 	CurrentLoopSubroutine := "LoopSoloTerry"

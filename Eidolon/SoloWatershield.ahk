@@ -1,20 +1,3 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to asist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance Force
-#Persistent
-#InstallKeybdHook
-#InstallMouseHook
-#KeyHistory 0
-ListLines Off
-SetBatchLines -1
-SetKeyDelay, -1, -1
-SetMouseDelay, -1, -1
-SetControlDelay -1
-SetWinDelay -1
-#MaxHotkeysPerInterval 100000
-Process, Priority,, High
 
 
 
@@ -64,7 +47,7 @@ Return
 ; 		Gosub, ClToCr
 ; 	} else {
 ; 		DllCall("Kernel32\Sleep", "UInt", 105) ; Give time for pink number to show up
-; 		PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
+; 		PixelSearch, PX, PY, 600, 320, 680, 360, 0x00F7FF, 3, Fast ; Find CL white crit number
 ; 		if (Errorlevel == 0) {
 ; 			SendInput {Numpad0}
 ; 			Critical, Off ; Execute CL protocol
@@ -101,7 +84,7 @@ Return
 ; 		Gosub, ClToCr
 ; 	} else {
 ; 		DllCall("Kernel32\Sleep", "UInt", 100) ; Give time for pink number to show up
-; 		PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number															
+; 		PixelSearch, PX, PY, 600, 320, 680, 360, 0x00F7FF, 3, Fast ; Find CL white crit number															
 ; 		if (Errorlevel == 0) {
 ; 			SendInput {Numpad0}
 ; 			Critical, Off ; Execute CL protocol
@@ -156,7 +139,7 @@ ClToCr:
 	SendInput {Del}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {RButton down}
-	lSaveCounterAfterSleep(30, LastPerformanceCounter)
+	lSaveCounterAfterSleep(100, LastPerformanceCounter)
 	SendInput {LButton}
 	DllCall("Kernel32\Sleep", "UInt", 10)
 	SendInput {RButton up} 
@@ -178,10 +161,12 @@ ClToMidGarry:
 	SendInput {LShift Up}
 	lSleep(170)
 	SendInput {Mbutton}
-	lSleep(50)
+	SendInput {s Down}
+	lSleep(500)
 	SendInput {e}
+	SendInput {s Up}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-	DllCall("mouse_event", uint, 1, int, -2250, int, -750, uint, 0, int, 0) ; look at limb
+	DllCall("mouse_event", uint, 1, int, -2230, int, -750, uint, 0, int, 0) ; look at limb
 	SendInput {Del}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {RButton down}
@@ -213,7 +198,7 @@ ClToLong:
 	SendInput {LShift up}
 	lSleep(170)
 	SendInput {Mbutton}
-	lSleep(50)
+	lSleep(500)
 	SendInput {e}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	DllCall("mouse_event", uint, 1, int, -573, int, 130, uint, 0, int, 0) ; look at limb
@@ -254,3 +239,22 @@ ClToLong:
 ; 	}
 ; 	*/
 Return
+
+
+	; DllCall("mouse_event", uint, 1, int, -1612, int, -380, uint, 0, int, 0) ; Face towards long
+	; DllCall("Kernel32\Sleep", "UInt", 30)
+	; loop {
+	; PixelSearch, PX, PY, 900, 480, 1020, 600, 0x00F7FF, 0, Fast RGB; Lock on to loc-pin
+	; } until (ErrorLevel == 0)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
+	; loop {
+	; 	PixelSearch, PX, PY, 920, 500, 1000, 580, 0x00F7FF, 0, Fast RGB; Lock on to loc-pin
+	; } until (ErrorLevel == 0)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
+	; loop {
+	; 	PixelSearch, PX, PY, 940, 520, 980, 560, 0x00F7FF, 0, Fast RGB; Lock on to loc-pin
+	; } until (ErrorLevel == 0)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
