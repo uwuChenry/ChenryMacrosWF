@@ -1,8 +1,35 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to asist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
+#Persistent
+#InstallKeybdHook
+#InstallMouseHook
+#KeyHistory 0
+ListLines Off
+SetBatchLines -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1, -1
+SetControlDelay -1
+SetWinDelay -1
+#MaxHotkeysPerInterval 100000
+Process, Priority,, High
+
+
+
+
+
+
 global CurrentLoopSubroutine := "LoopSoloTerry"
 global SavedLoopSubroutine := ""
 global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
+
+global fps := 300
+global ZenithShot := 8000/fps
+global EmoteOffset := 60
 
 asdf:
 Return
@@ -24,7 +51,7 @@ ManualPPRZ:
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
 	SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 530)
-	SendInput {MButton}
+	;SendInput {MButton}
 	lSleep(1585, FirstPropaMoment)
 	SendInput {LButton Down}
 	SendInput {e}

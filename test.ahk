@@ -37,7 +37,7 @@ Return
 	MsgBox, test2
 	CoordMode, Pixel, Screen
 	Loop, {
-		ImageSearch, PX, PY, 0, 0, 1920, 1080, *15 *TransBlack test7.png
+		ImageSearch, PX, PY, 0, 0, 1920, 1080, *50 1.png
 	} until (ErrorLevel == 0)
 	MsgBox, pog
 	DllCall("SetCursorPos", "int", PX, "int", PY)

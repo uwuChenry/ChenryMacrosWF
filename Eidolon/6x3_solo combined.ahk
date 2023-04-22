@@ -1,13 +1,30 @@
-﻿#Include OverclockAHK.ahk
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to asist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
+#Persistent
+#InstallKeybdHook
+#InstallMouseHook
+#KeyHistory 0
+ListLines Off
+SetBatchLines -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1, -1
+SetControlDelay -1
+SetWinDelay -1
+#MaxHotkeysPerInterval 100000
+Process, Priority,, High
+
+
 #include SleepFunctions.ahk
 #include SoloLimbMacro.ahk
+#Include SleepFunctionsTwo.ahk
 #include SoloWatershield.ahk
 CoordMode, Pixel, Screen
 
 
-global fps := 330
-global ZenithShot := 8000/fps
-global EmoteOffset := 60
+
 
 asd:
 Return
@@ -15,11 +32,11 @@ Return
 #IfWinActive Warframe
 Q::
 	SendInput {RButton Down}
-	lSleep(70)	
+	lSleep2(80)	
 	SendInput {RButton Up}
-	lSleep(10)
+	lSleep2(10)
 	SendInput {e}
-	lSleep(240)
+	lSleep2(240)
 	SendInput, 5
 Return
 
@@ -57,9 +74,9 @@ Return
 
 ; ;--CL TO LONG---
       
-0:: 
-	Gosub, ClToLong
-Return
+; 0:: 
+; 	Gosub, ClToLong
+; Return
 
 
 ;-------------------------- LIMB MACROS --------------------------
@@ -68,18 +85,24 @@ Return
 	Gosub, %CurrentLoopSubroutine%
 Return
 
-CapsLock::
+*CapsLock::
     Gosub, LoopMacroedZeroed ; Press after you zero-ed. This will stop the loop and change CurrentLoopSubroutine to ManualPPRZ. Press again to change the loop limb macro, watershield macro, and detector macro to the next eidolon (Terry -> Garry -> Harry)
 Return
 
 ;-------------------------- RELOAD MACRO --------------------------
 
-F3::
+*F3::
 	Reload
 Return
 
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
+!4::
+	loop {
+		SendInput {x}
+		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
+	} until (ErrorLevel == 0)
+	Gosub, ShrineToCl
 
 !3::	
 	loop {

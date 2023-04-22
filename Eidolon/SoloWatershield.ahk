@@ -1,3 +1,24 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to asist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
+#Persistent
+#InstallKeybdHook
+#InstallMouseHook
+#KeyHistory 0
+ListLines Off
+SetBatchLines -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1, -1
+SetControlDelay -1
+SetWinDelay -1
+#MaxHotkeysPerInterval 100000
+Process, Priority,, High
+
+
+
+
 global CurrentDetector := ""
 
 ;-------------------------- SOLO WATERSHIELD MACROS --------------------------
@@ -15,14 +36,14 @@ ShrineToCl:
 	; 	pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	; } until (ErrorLevel == 0)
 	; Critical, Off
-	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) 
+	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) ; turn right
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {Space down}
 	lSaveCounterAfterSleep(80, LastPerformanceCounter)
 	SendInput {Space up}  
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {t} 
-	DllCall("mouse_event", uint, 1, int, 1850, int, 0, uint, 0, int, 0) ; Aim at limb
+	DllCall("mouse_event", uint, 1, int, 1860, int, 0, uint, 0, int, 0) ; Aim at limb
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {e} 
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
