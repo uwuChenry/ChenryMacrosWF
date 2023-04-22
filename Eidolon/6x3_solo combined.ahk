@@ -32,11 +32,11 @@ Return
 #IfWinActive Warframe
 Q::
 	SendInput {RButton Down}
-	lSleep2(80)	
+	lWin32Sleep(70)	
 	SendInput {RButton Up}
-	lSleep2(10)
+	lWin32Sleep(10)
 	SendInput {e}
-	lSleep2(240)
+	lWin32Sleep(260)
 	SendInput, 5
 Return
 
@@ -74,9 +74,9 @@ Return
 
 ; ;--CL TO LONG---
       
-; 0:: 
-; 	Gosub, ClToLong
-; Return
+0:: 
+	Gosub, ClToLong
+Return
 
 
 ;-------------------------- LIMB MACROS --------------------------
@@ -92,16 +92,19 @@ Return
 ;-------------------------- RELOAD MACRO --------------------------
 
 *F3::
+	MsgBox, test
 	Reload
 Return
 
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
+	SendInput {x Down}
 	loop {
-		SendInput {x}
 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	} until (ErrorLevel == 0)
+	SendInput {x Up}
+	lSleep(10)
 	Gosub, ShrineToCl
 
 !3::	

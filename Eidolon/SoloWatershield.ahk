@@ -30,12 +30,6 @@ Return
 
 
 ShrineToCl:
-	; Critical, On
-	; loop {
-	; 	SendInput {x}
-	; 	pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
-	; } until (ErrorLevel == 0)
-	; Critical, Off
 	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) ; turn right
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	SendInput {Space down}
@@ -44,7 +38,7 @@ ShrineToCl:
 	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {t} 
 	DllCall("mouse_event", uint, 1, int, 1860, int, 0, uint, 0, int, 0) ; Aim at limb
-	lSaveCounterAfterSleep(10, LastPerformanceCounter)
+	lSaveCounterAfterSleep(30, LastPerformanceCounter)
 	SendInput {e} 
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {5} 
@@ -56,7 +50,7 @@ ShrineToCl:
 	SendInput {e} 
 	lWin32Sleep(715, LastPerformanceCounter)
 	SendInput {z} 
-	lWin32Sleep(1640, LastPerformanceCounter) ; 1800m 1770
+	lWin32Sleep(1650, LastPerformanceCounter) ; 1800m 1770
 	SendInput {LButton}
 Return
 
@@ -162,9 +156,9 @@ ClToCr:
 	SendInput {Del}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {RButton down}
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	lSaveCounterAfterSleep(30, LastPerformanceCounter)
 	SendInput {LButton}
-	DllCall("Kernel32\Sleep", "UInt", 20)
+	DllCall("Kernel32\Sleep", "UInt", 10)
 	SendInput {RButton up} 
 Return	
 
@@ -191,9 +185,9 @@ ClToMidGarry:
 	SendInput {Del}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {RButton down}
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	lSaveCounterAfterSleep(30, LastPerformanceCounter)
 	SendInput {LButton}
-	DllCall("Kernel32\Sleep", "UInt", 20)
+	DllCall("Kernel32\Sleep", "UInt", 10)
 	SendInput {RButton up} 
 
 Return
@@ -204,15 +198,32 @@ Return
 ; ;--CL TO LONG---
 
 ClToLong:
-	DllCall("mouse_event", uint, 1, int, -1630, int, -540, uint, 0, int, 0) ; Face towards long
+	DllCall("mouse_event", uint, 1, int, -1612, int, -540, uint, 0, int, 0) ; Face towards long
 	SendInput {LShift down}
 	SendInput {w down}
-	lWin32Sleep(680)
+	lWin32Sleep(760)
 	DllCall("mouse_event", uint, 1, int, 0, int, 1000, uint, 0, int, 0) ; Face down
 	lSleep(10)
 	SendInput {w up}
-	lSleep(300)
+	SendInput {e}
+	lSleep(30)
+	DllCall("mouse_event", uint, 1, int, -1800, int, -800, uint, 0, int, 0) ; turn towards mountain
+	lSleep(150)
+	SendInput {5}
 	SendInput {LShift up}
+	lSleep(170)
+	SendInput {Mbutton}
+	lSleep(50)
+	SendInput {e}
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	DllCall("mouse_event", uint, 1, int, -573, int, 130, uint, 0, int, 0) ; look at limb
+	SendInput {Del}
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	SendInput {RButton down}
+	lSaveCounterAfterSleep(30, LastPerformanceCounter)
+	SendInput {LButton}
+	DllCall("Kernel32\Sleep", "UInt", 10)
+	SendInput {RButton up} 
 
 
 ; 	SendInput {LShift down}
