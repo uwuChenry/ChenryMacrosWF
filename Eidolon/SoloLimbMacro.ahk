@@ -1,9 +1,3 @@
-
-
-
-
-
-
 global CurrentLoopSubroutine := "LoopSoloTerry"
 global SavedLoopSubroutine := ""
 global SavedDetector := ""
@@ -73,15 +67,15 @@ Return
 
 LoopSoloTerry: 
 	loop 3 {
-		Gosub, ManualPPZ
+		Gosub, ManualPPRZ
 		Sleep 12000
 		if (StopLoop == True) {
 			StopLoop := False
 			Exit
 		}
-		lSleep(15577, LastLimbDestroyedTiming) ; 17186 - 1610 + 1 = 15577
+		lSleep(15596, LastLimbDestroyedTiming) ; 17186 - 1610 + 1 = 15577
 	}
-	Gosub, ManualPPZ
+	Gosub, ManualPPRZ
 	CurrentLoopSubroutine := "LoopSoloGarry"
 	CurrentDetector := "GarryDetector"
 Return
@@ -95,7 +89,7 @@ LoopSoloGarry:
 			StopLoop := False
 			Exit
 		}
-		lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+		lSleep(15596, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
 	}
 	Gosub, ManualPPRZ
 	CurrentLoopSubroutine := "LoopSoloHarry"
@@ -112,7 +106,7 @@ LoopSoloHarry:
 			StopLoop := False
 			Exit
 		}
-		lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+		lSleep(15596, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
 	}
 	Gosub, ManualPPRZ
 	CurrentLoopSubroutine := "LoopSoloTerry"

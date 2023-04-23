@@ -37,27 +37,27 @@ Return
 ;-------------------------- SOLO WATERSHIELD MACROS --------------------------
 
 ;---SHRINE TO CL---
-
+#IfWinActive Warframe
 7::	
 	Gosub, ShrineToCl
 	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
 Return
 
 ; ;---CL TO CR---
-
+#IfWinActive Warframe
 8::
 	Gosub, ClToCr
 Return
 
 ; ;---CL TO MID---
-
+#IfWinActive Warframe
 9::
 	Gosub, ClToMidGarry
 	;Gosub, ClToMidHarry
 Return
 
 ; ;--CL TO LONG---
-      
+#IfWinActive Warframe      
 0:: 
 	Gosub, ClToLong
 Return
