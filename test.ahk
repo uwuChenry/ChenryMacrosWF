@@ -20,10 +20,13 @@ CenteredToolTip(text, duration = 999){ ; Duration in ms (MilliSeconds). Default 
 	;CenteredToolTip("test")
 	CoordMode, Pixel, Screen
 	loop { 
-		;SendInput, x
-		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
-		;pixelSearch, PX, PY, 1080, 860, 1120, 900, 0xC6EAFF, 14, Fast RGB ; Detect if shard has appeared
-		;PixelSearch, PX, PY, 600, 320, 680, 360, 0xFFFFFF, 3, Fast ; Find CL white crit number
+		PixelSearch, PX, PY, 8, 470, 80, 520, 0xCEB27D, 10, Fast RGB; goog detect mid garry
+		;PixelSearch, PX, PY, 1150, 400, 1250, 420, 0xFFFEE0, 10, Fast RGB; goog detect cr garry
+		;PixelSearch, PX, PY, 1215, 240, 1265, 250, 0xFFDF76, 10, Fast RGB; goog v2 detect cr garry
+		;pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
+		;pixelSearch, PX, PY, 1080, 860, 1120, 900, 0xC6EAFF, 14, Fast RGB ; Detect if shard has appeared particles
+		;PixelSearch, PX, PY, 900, 500, 1000, 530, 0xFDFDFD, 1, Fast RGB; goog Find CL white crit number
+
 	} until (ErrorLevel == 0)
 	MsgBox, pog
 	DllCall("SetCursorPos", "int", PX, "int", PY)
@@ -46,5 +49,6 @@ Return
 	CenteredToolTip(PY)
 
 ^4::
+	MsgBox, reload
     Reload
 Return

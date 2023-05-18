@@ -13,12 +13,14 @@ Return
 
 
 ShrineToCl:
+	SendInput {Ins}
 	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) ; turn right
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {Space down}
-	lSaveCounterAfterSleep(80, LastPerformanceCounter)
+	lSaveCounterAfterSleep(50, LastPerformanceCounter)
 	SendInput {Space up}  
-	lSaveCounterAfterSleep(10, LastPerformanceCounter)
+	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {t} 
 	DllCall("mouse_event", uint, 1, int, 1860, int, 0, uint, 0, int, 0) ; Aim at limb
 	lSaveCounterAfterSleep(30, LastPerformanceCounter)
@@ -26,9 +28,10 @@ ShrineToCl:
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {5} 
 	lSaveCounterAfterSleep(130, LastPerformanceCounter)
-	SendInput {MButton} 
+	SendInput {MButton}
+	SendInput {Home} ; Uncap fps 
 	SendInput {1} 
-	DllCall("mouse_event", uint, 1, int, 0, int, 665, uint, 0, int, 0) ; Aim at limb
+	DllCall("mouse_event", uint, 1, int, 0, int, 625, uint, 0, int, 0) ; Aim at limb
 	lWin32Sleep(675, LastPerformanceCounter)
 	SendInput {e} 
 	lWin32Sleep(715, LastPerformanceCounter)
@@ -39,44 +42,39 @@ Return
 
 ;---GARRY DETECTOR---
 
-; GarryDetector:
-; 	Critical, On
-; 	PixelSearch, PX, PY, 770, 270, 840, 300, 0x6C9983, 11, Fast ; Find CR garry limb
-; 	if (Errorlevel == 0) { 
-; 		Critical, Off ; Execute CR protocol
-; 		Gosub, ClToCr
-; 	} else {
-; 		DllCall("Kernel32\Sleep", "UInt", 105) ; Give time for pink number to show up
-; 		PixelSearch, PX, PY, 600, 320, 680, 360, 0x00F7FF, 3, Fast ; Find CL white crit number
-; 		if (Errorlevel == 0) {
-; 			SendInput {Numpad0}
-; 			Critical, Off ; Execute CL protocol
-; 			; SendInput {Home} ; Uncap fps
-; 		} else {
-; 			DllCall("mouse_event", uint, 1, int, -1590, int, -520, uint, 0, int, 0) ; Face towards long
-; 			DllCall("Kernel32\Sleep", "UInt", 105) ; Allow time screen to adjust so ahk can find the glow
-; 			PixelSearch, PX, PY, 876, 376, 959, 467, 0x8093A4, 10, Fast ; Find MID garry glow 729199
-; 			; 63710C
-; 			; 5D6135
-; 			; B: 99 + 93 = 96
-; 			; G: 113 + 97 = 105
-; 			; R: 53 + 12 = 33
-; 			if (ErrorLevel == 0) { 
-; 				Critical, Off ; Execute MID protocol
-; 				DllCall("mouse_event", uint, 1, int, 1590, int, 520, uint, 0, int, 0) ; Reset direction
-; 				Gosub, ClToMidGarry
-; 			} else {
-; 				Critical, Off ; Execute LONG protocol
-; 				DllCall("mouse_event", uint, 1, int, 1590, int, 520, uint, 0, int, 0) ; Reset direction
-; 				Gosub, ClToLong 
-; 			}
-; 		}
-; 	}
-; Return
+GarryDetector:
+	Critical, On
+	PixelSearch, PX, PY, 1215, 240, 1265, 250, 0xFFDF76, 10, Fast RGB; goog v2 detect cr garry
+	if (Errorlevel == 0) { 
+		Critical, Off ; Execute CR protocol
+		Gosub, ClToCr
+	} else {
+		DllCall("Kernel32\Sleep", "UInt", 105) ; Give time for pink number to show up
+		PixelSearch, PX, PY, 900, 500, 1000, 530, 0xFDFDFD, 1, Fast RGB; goog Find CL white crit number
+		if (Errorlevel == 0) {
+			;SendInput {Numpad0}
+			Critical, Off ; Execute CL protocol
+			; SendInput {Home} ; Uncap fps
+		} else {
+			DllCall("mouse_event", uint, 1, int, -1612, int, -540, uint, 0, int, 0) ; Face towards long
+			; DllCall("Kernel32\Sleep", "UInt", 105) ; Allow time screen to adjust so ahk can find the glow
+			; PixelSearch, PX, PY, 876, 376, 959, 467, 0x8093A4, 10, Fast ; Find MID garry glow 729199
+			; if (ErrorLevel == 0) { 
+			; 	Critical, Off ; Execute MID protocol
+			; 	DllCall("mouse_event", uint, 1, int, 1590, int, 520, uint, 0, int, 0) ; Reset direction
+			; 	Gosub, ClToMidGarry
+			; } else {
+			; 	Critical, Off ; Execute LONG protocol
+			; 	DllCall("mouse_event", uint, 1, int, 1590, int, 520, uint, 0, int, 0) ; Reset direction
+			; 	Gosub, ClToLong 
+			; }
+		}
+	}
+Return
 
 ; ;---HARRY DETECTOR---
 
-; HarryDetector:
+HarryDetector:
 ; 	Critical, On
 ; 	PixelSearch, PX, PY, 792, 274, 859, 317, 0x878741, 8, Fast ; Find CR harry limb
 ; 	if (Errorlevel == 0) {
@@ -112,7 +110,7 @@ Return
 ; 			}
 ; 		}
 ; 	;}
-; Return
+Return
 
 ; ;---CL TO CR---
 
@@ -134,12 +132,12 @@ ClToCr:
 	SendInput {Mbutton}
 	lSleep(50)
 	DllCall("mouse_event", uint, 1, int, -2279, int, -300, uint, 0, int, 0)
-	SendInput {e}
+	;SendInput {e}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {Del}
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {RButton down}
-	lSaveCounterAfterSleep(100, LastPerformanceCounter)
+	lSaveCounterAfterSleep(200, LastPerformanceCounter)
 	SendInput {LButton}
 	DllCall("Kernel32\Sleep", "UInt", 10)
 	SendInput {RButton up} 
@@ -151,30 +149,49 @@ ClToMidGarry:
 	DllCall("mouse_event", uint, 1, int, -790, int, -385, uint, 0, int, 0) ; look at mid
 	SendInput {LShift down}
 	SendInput {w down}
-	lSleep(185)
+	lSleep(145)
 	SendInput {w up}
 	lSleep(10)
+	DllCall("mouse_event", uint, 1, int, 0, int, 805, uint, 0, int, 0) ; look at mid
 	SendInput, e
-	lSleep(150)
+	lSleep(250)
 	SendInput {5}
 	SendInput {LShift Up}
-	DllCall("mouse_event", uint, 1, int, -2000, int, -300, uint, 0, int, 0) ; aim
+	;DllCall("mouse_event", uint, 1, int, -2000, int, -300, uint, 0, int, 0) ; aim
 	lSleep(170)
 	SendInput {Mbutton}
-	lSleep(50)
+	lSleep(350)
 	SendInput {e}
 	lSleep(5)
 	SendInput {Del}
-	DllCall("mouse_event", uint, 1, int, -350, int, 900, uint, 0, int, 0) ; look at ground
-	lSleep(50)
-	SendInput {j}
-	lSleep(50)
-	DllCall("mouse_event", uint, 1, int, -190, int, -570, uint, 0, int, 0) ; look at limb
+	; DllCall("mouse_event", uint, 1, int, -350, int, 900, uint, 0, int, 0) ; look at ground
+	; lSleep(50)
+	; SendInput {j}
+	; lSleep(50)
+	DllCall("mouse_event", uint, 1, int, -2530, int, -730, uint, 0, int, 0) ; look at limb
 	SendInput {RButton Down}
 	lSleep(30)
-	SendInput {LButton}
-	DllCall("Kernel32\Sleep", "UInt", 10)
 	SendInput {RButton up} 
+	lSleep(30)
+	SendInput {LButton}
+
+
+
+
+
+	; SendInput {e}
+	; lSleep(5)
+	; SendInput {Del}
+	; DllCall("mouse_event", uint, 1, int, -350, int, 900, uint, 0, int, 0) ; look at ground
+	; lSleep(50)
+	; SendInput {j}
+	; lSleep(50)
+	; DllCall("mouse_event", uint, 1, int, -190, int, -570, uint, 0, int, 0) ; look at limb
+	; SendInput {RButton Down}
+	; lSleep(30)
+	; SendInput {LButton}
+	; DllCall("Kernel32\Sleep", "UInt", 10)
+	; SendInput {RButton up} 
 
 
 	; lSaveCounterAfterSleep(20, LastPerformanceCounter)
@@ -198,12 +215,14 @@ ClToLong:
 	DllCall("mouse_event", uint, 1, int, -1612, int, -540, uint, 0, int, 0) ; Face towards long
 	SendInput {LShift down}
 	SendInput {w down}
-	lWin32Sleep(760)
+	lSleep(160)
+	SendInput {t}
+	lSleep(205)	
 	DllCall("mouse_event", uint, 1, int, 0, int, 1000, uint, 0, int, 0) ; Face down
 	lSleep(10)
 	SendInput {w up}
 	SendInput {e}
-	lSleep(30)
+	lSleep(500)
 	DllCall("mouse_event", uint, 1, int, -1800, int, -800, uint, 0, int, 0) ; turn towards mountain
 	lSleep(150)
 	SendInput {5}

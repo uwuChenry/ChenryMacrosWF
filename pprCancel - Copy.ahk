@@ -92,7 +92,7 @@ Q::
 	SendInput {RButton Up}
 	lSleep(10)
 	SendInput {e}
-	lSleep(200)
+	lSleep(240)
 	SendInput, 5
 Return
 
@@ -104,11 +104,14 @@ XButton1::
 	DllCall("Kernel32\Sleep", "UInt", 530)
 	SendInput {MButton}
 	lSleep(1585, FirstPropaMoment)
-	SendInput {LButton Down}
+	SendInput {LButton}
+	;SendInput {LButton Down}
 	SendInput {e}
-	lSleep(ZenithShot+EmoteOffset)
-	SendInput {LButton Up}
-	SendInput {Del}
+	lSleep(35)
+	;lSleep(ZenithShot+EmoteOffset)
+	SendInput {LButton}
+	;SendInput {LButton Up}
+	;SendInput {Del}
 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
 return
 
@@ -133,10 +136,10 @@ return
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
 	SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 530)
-	SendInput {MButton}
+	;SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 50)
 	Gosub, MeleeSwapIntoWarframeWithVigSwapAndAniCancel
-	lWin32Sleep(1615, FirstPropaMoment) 
+	lWin32Sleep(1610, FirstPropaMoment) 
 	SendInput {LButton}
 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
 	SendInput {RButton up}
@@ -147,10 +150,10 @@ return
 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment)
 	SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 530)
-	SendInput {MButton}
+	;SendInput {MButton}
 	DllCall("Kernel32\Sleep", "UInt", 50)
 	Gosub, MeleeSwapIntoWarframeWithVigSwapAndAniCancel
-	lWin32Sleep(1615, FirstPropaMoment) 
+	lWin32Sleep(1610, FirstPropaMoment) 
 	SendInput {LButton}
 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
 	SendInput {RButton up}

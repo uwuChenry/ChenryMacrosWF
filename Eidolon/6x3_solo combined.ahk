@@ -83,13 +83,17 @@ Return
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
-	SendInput {x Down}
+	Critical, On
 	loop {
+		SendInput x
 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	} until (ErrorLevel == 0)
+	Critical, Off
+	SendInput {Insert}
 	SendInput {x Up}
-	lSleep(10)
+	;lSleep(10)
 	Gosub, ShrineToCl
+	Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
 
 !3::	
 	loop {
@@ -107,11 +111,11 @@ Return
 	} until (ErrorLevel == 0)
 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
 	DllCall("Kernel32\Sleep", "UInt", 30)
-	loop {
-		PixelSearch, PX, PY, 940, 520, 980, 560, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
-	} until (ErrorLevel == 0)
-	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
-	DllCall("Kernel32\Sleep", "UInt", 30)
+	; loop {
+	; 	PixelSearch, PX, PY, 940, 520, 980, 560, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
+	; } until (ErrorLevel == 0)
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
 	;CenteredToolTip("test")
 Return
 
