@@ -8,6 +8,6 @@ Q::
 	SendInput {RButton Up}
 	lSleep(10)
 	SendInput {e}
-	lSleep(260)
+	lSleep(180)
 	SendInput, 5
 Return

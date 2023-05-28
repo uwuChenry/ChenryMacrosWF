@@ -1,7 +1,7 @@
 
 
-
-
+#include ShinsImageScanClass.ahk
+scan := new ShinsImageScanClass()
 global CurrentDetector := ""
 
 ;-------------------------- SOLO WATERSHIELD MACROS --------------------------
@@ -12,18 +12,20 @@ asdfds:
 Return
 
 
+
+
 ShrineToCl:
 	SendInput {Ins}
 	DllCall("mouse_event", uint, 1, int, -790, int, 110, uint, 0, int, 0) ; turn right
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
-	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+	lSaveCounterAfterSleep(30, LastPerformanceCounter) ;20
 	SendInput {Space down}
 	lSaveCounterAfterSleep(50, LastPerformanceCounter)
 	SendInput {Space up}  
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {t} 
 	DllCall("mouse_event", uint, 1, int, 1860, int, 0, uint, 0, int, 0) ; Aim at limb
-	lSaveCounterAfterSleep(30, LastPerformanceCounter)
+	lSaveCounterAfterSleep(40, LastPerformanceCounter) ;30
 	SendInput {e} 
 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
 	SendInput {5} 
@@ -38,25 +40,26 @@ ShrineToCl:
 	SendInput {z} 
 	lWin32Sleep(1650, LastPerformanceCounter) ; 1800m 1770
 	SendInput {LButton}
+
 Return
 
 ;---GARRY DETECTOR---
 
 GarryDetector:
 	Critical, On
-	PixelSearch, PX, PY, 1215, 240, 1265, 250, 0xFFDF76, 10, Fast RGB; goog v2 detect cr garry
-	if (Errorlevel == 0) { 
+	if (scan.PixelRegion(0x3C292C, 1184, 440, 60, 30, 20)) { 
 		Critical, Off ; Execute CR protocol
 		Gosub, ClToCr
 	} else {
-		DllCall("Kernel32\Sleep", "UInt", 105) ; Give time for pink number to show up
+		DllCall("Kernel32\Sleep", "UInt", 205) ; Give time for pink number to show up
 		PixelSearch, PX, PY, 900, 500, 1000, 530, 0xFDFDFD, 1, Fast RGB; goog Find CL white crit number
 		if (Errorlevel == 0) {
 			;SendInput {Numpad0}
 			Critical, Off ; Execute CL protocol
 			; SendInput {Home} ; Uncap fps
 		} else {
-			DllCall("mouse_event", uint, 1, int, -1612, int, -540, uint, 0, int, 0) ; Face towards long
+			DllCall("mouse_event", uint, 1, int, -590, int, 0, uint, 0, int, 0) ; turn right
+			Critical, Off
 			; DllCall("Kernel32\Sleep", "UInt", 105) ; Allow time screen to adjust so ahk can find the glow
 			; PixelSearch, PX, PY, 876, 376, 959, 467, 0x8093A4, 10, Fast ; Find MID garry glow 729199
 			; if (ErrorLevel == 0) { 
