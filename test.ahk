@@ -48,7 +48,8 @@ Return
 ^1:: 
     MsgBox, test1
     loop{
-    if(scan.PixelRegion(0x3C292C, 1184, 440, 60, 30, 20, x, y)){
+    if(scan.PixelRegion(0x53C97C, 860, 440, 200, 200, 0, x, y)){
+    ;if(scan.PixelRegion(0x3C292C, 1184, 440, 60, 30, 20, x, y)){
         MsgBox, pog
 		sleep 200
         DllCall("SetCursorPos", "int", x, "int", y)
@@ -57,6 +58,7 @@ Return
         ;Sleep, 1000
 		break
     }}
+            MsgBox, pog
 Return
 
 ; ^2::

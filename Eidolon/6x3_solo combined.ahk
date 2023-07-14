@@ -1,12 +1,12 @@
 ﻿
-
 #Include OverclockAHK.ahk
 #include SleepFunctions.ahk
 #include SoloLimbMacro.ahk
 ;#Include SleepFunctionsTwo.ahk
 #include SoloWatershield.ahk
 CoordMode, Pixel, Screen
-
+; #include ShinsImageScanClass.ahk
+; scan := new ShinsImageScanClass()
 
 
 
@@ -83,19 +83,33 @@ Return
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
-	Critical, On
+	SendInput {Insert}
+	SendInput {Tab Down}
+	Sleep, 300
+	SendInput {Tab Up}
+	;Critical, On
 	loop {
 		SendInput x
 		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 14, Fast RGB ; Detect if shard has appeared
 	} until (ErrorLevel == 0)
-	Critical, Off
-	SendInput {Insert}
+	;Critical, Off
 	SendInput {x Up}
 	;lSleep(10)
 	Gosub, ShrineToCl
-	Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
+	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
+Return
 
 !3::	
+	; MsgBox, test
+	; ;loop {
+	; 	if (scan.PixelRegion(0x53C97C, 860, 440, 200, 200, 0, x, y)){
+	; 		MsgBox, pog
+	; 		;Break
+			
+	; 	}
+	; ;} 
+	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
+	; DllCall("Kernel32\Sleep", "UInt", 30)
 	loop {
 		PixelSearch, PX, PY, 860, 440, 1060, 640, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
 	} until (ErrorLevel == 0)
@@ -110,12 +124,5 @@ Return
 		PixelSearch, PX, PY, 920, 500, 1000, 580, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
 	} until (ErrorLevel == 0)
 	DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
-	DllCall("Kernel32\Sleep", "UInt", 30)
-	; loop {
-	; 	PixelSearch, PX, PY, 940, 520, 980, 560, 0x53C97C, 0, Fast RGB; Lock on to loc-pin
-	; } until (ErrorLevel == 0)
-	; DllCall("mouse_event", "UInt", 0x01, "UInt", (PX-962.5)*1.5, "UInt", (PY-538)*1.5)
-	; DllCall("Kernel32\Sleep", "UInt", 30)
-	;CenteredToolTip("test")
 Return
 

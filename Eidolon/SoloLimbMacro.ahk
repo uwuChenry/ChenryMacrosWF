@@ -4,7 +4,7 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-global fps := 280
+global fps := 300
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
 

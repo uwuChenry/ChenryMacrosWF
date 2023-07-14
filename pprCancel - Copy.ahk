@@ -104,14 +104,14 @@ XButton1::
 	DllCall("Kernel32\Sleep", "UInt", 530)
 	SendInput {MButton}
 	lSleep(1585, FirstPropaMoment)
-	SendInput {LButton}
-	;SendInput {LButton Down}
+	;SendInput {LButton}
+	SendInput {LButton Down}
 	SendInput {e}
-	lSleep(35)
-	;lSleep(ZenithShot+EmoteOffset)
-	SendInput {LButton}
-	;SendInput {LButton Up}
-	;SendInput {Del}
+	;lSleep(35)
+	lSleep(ZenithShot+EmoteOffset)
+	;SendInput {LButton}
+	SendInput {LButton Up}
+	SendInput {Del}
 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
 return
 
