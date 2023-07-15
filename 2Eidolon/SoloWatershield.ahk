@@ -29,7 +29,7 @@ Return
 ShrineToClLow:
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	DllCall("mouse_event", uint, 1, int, -760, int, 175, uint, 0, int, 0) ; turn right
-	lSaveCounterAfterSleep(120, LastPerformanceCounter) ;20
+	lSaveCounterAfterSleep(20, LastPerformanceCounter) ;20
 	SendInput {Space down}
 	lSaveCounterAfterSleep(40, LastPerformanceCounter)
 	SendInput {Space up}  
@@ -56,7 +56,7 @@ Return
 ShrineToClHigh:
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	DllCall("mouse_event", uint, 1, int, -800, int, 85, uint, 0, int, 0) ; turn right
-	lSaveCounterAfterSleep(120, LastPerformanceCounter) ;20
+	lSaveCounterAfterSleep(20, LastPerformanceCounter) ;20
 	SendInput {Space down}
 	lSaveCounterAfterSleep(40, LastPerformanceCounter)
 	SendInput {Space up}  
