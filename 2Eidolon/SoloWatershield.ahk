@@ -86,9 +86,9 @@ ShrineToClOld:
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	lSaveCounterAfterSleep(20, LastPerformanceCounter) ;20
 	SendInput {Space down}
-	lSaveCounterAfterSleep(40, LastPerformanceCounter)
+	lSaveCounterAfterSleep(50, LastPerformanceCounter)
 	SendInput {Space up}  
-	lSaveCounterAfterSleep(5, LastPerformanceCounter)
+	lSaveCounterAfterSleep(10, LastPerformanceCounter)
 	SendInput {t} 
 	DllCall("mouse_event", uint, 1, int, 1865, int, 0, uint, 0, int, 0) ; Aim at limb
 	lSaveCounterAfterSleep(30, LastPerformanceCounter) ;30
@@ -97,7 +97,7 @@ ShrineToClOld:
 	SendInput {5} 
 	lSaveCounterAfterSleep(130, LastPerformanceCounter)
 	SendInput {MButton}
-	SendInput {Home} ; Uncap fps 
+	;SendInput {Home} ; Uncap fps 
 	SendInput {1} 
 	DllCall("mouse_event", uint, 1, int, 0, int, 625, uint, 0, int, 0) ; Aim at limb
 	lWin32Sleep(675, LastPerformanceCounter)

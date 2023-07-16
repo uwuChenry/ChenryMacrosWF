@@ -41,7 +41,7 @@ Return
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
-	SendInput {Insert}
+	;SendInput {Insert}
 	SendInput {Tab Down}
 	Sleep, 300
 	SendInput {Tab Up}
