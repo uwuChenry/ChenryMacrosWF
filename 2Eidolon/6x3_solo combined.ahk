@@ -34,6 +34,7 @@ Return
 ;-------------------------- RELOAD MACRO --------------------------
 
 *F3::
+	;SendInput {Home}
 	MsgBox, test
 	Reload
 Return
@@ -41,7 +42,7 @@ Return
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
-	;SendInput {Insert}
+	SendInput {Insert}
 	SendInput {Tab Down}
 	Sleep, 300
 	SendInput {Tab Up}
@@ -53,6 +54,7 @@ Return
 	Critical, Off
 	SendInput {x Up}
 	;lSleep(10)
+	;Gosub, ShrineToClLow
 	Gosub, ShrineToClOld
 Return
 

@@ -3,9 +3,9 @@
 
 #IfWinActive Warframe
 Q::
-	;SendInput {RButton Down}
+	SendInput {RButton Down}
 	lSleep(90)	
-	;SendInput {RButton Up}
+	SendInput {RButton Up}
 	lSleep(10)
 	SendInput {e}
 	lSleep(220)
