@@ -119,15 +119,6 @@ LoopSoloHarry:
     CurrentDetector := ""
 Return
 
-MeleeSwapIntoFrame:
-    SendInput {e}
-    DllCall("Kernel32\Sleep", "UInt", 20)
-    SendInput {Del}
-    DllCall("Kernel32\Sleep", "UInt", 20)
-    SendInput {RButton down}
-    DllCall("Kernel32\Sleep", "UInt", 5)
-    SendInput {RButton up}
-Return
 
 ;--- "OH NO I ZERO-ED" MACRO ---
 

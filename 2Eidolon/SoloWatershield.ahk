@@ -60,12 +60,6 @@ ShrineToClLow:
 	SendInput {RButton Up}
 Return
 
-; 	SendInput {Del}
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {RButton down} 
-; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
-; 	SendInput {LButton}
-
 ShrineToClHigh:
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
 	DllCall("mouse_event", uint, 1, int, -800, int, 85, uint, 0, int, 0) ; turn right

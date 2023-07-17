@@ -34,7 +34,6 @@ Return
 ;-------------------------- RELOAD MACRO --------------------------
 
 *F3::
-	;SendInput {Home}
 	MsgBox, test
 	Reload
 Return
@@ -53,7 +52,6 @@ Return
 	} until (ErrorLevel == 0)
 	Critical, Off
 	SendInput {x Up}
-	;lSleep(10)
 	;Gosub, ShrineToClLow
 	Gosub, ShrineToClOld
 Return
