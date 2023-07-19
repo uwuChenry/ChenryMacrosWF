@@ -21,8 +21,8 @@ ManualPPRZ:
     SendInput {e}
     SendInput {CtrlUp}
     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-    ;lSleep(ZenithShot+EmoteOffset)
-    lsleep(86)
+    lSleep(ZenithShot+EmoteOffset)
+    ;lsleep(86)
     SendInput {LButton Up}
     SendInput {Del}
 Return
@@ -84,7 +84,7 @@ LoopSoloGarry:
     }
     lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
     loop 3 {
-        Gosub, ManualPPRZLess
+        Gosub, ManualPPRZ
         Sleep 12000
         if (StopLoop == True) {
             StopLoop := False
@@ -98,7 +98,7 @@ LoopSoloGarry:
 Return
 
 LoopSoloHarry: 
-    Gosub, ManualPPRZLess
+    Gosub, ManualPPRZ
     Sleep 12000
     if (StopLoop == True) {
         StopLoop := False

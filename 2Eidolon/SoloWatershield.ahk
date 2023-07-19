@@ -50,10 +50,10 @@ ShrineToClLow:
 	SendInput {e} 
 	lWin32Sleep(715, LastPerformanceCounter)
 	SendInput {Del} 
-	lWin32Sleep(755, LastPerformanceCounter)
-	SendInput {Del} 
-	lWin32Sleep(1500, LastPerformanceCounter)
-	SendInput {RButton Down}
+	;lWin32Sleep(735, LastPerformanceCounter)
+	;SendInput {Del} 
+	lWin32Sleep(750, LastPerformanceCounter)
+	SendInput {LButton}
 	lWin32Sleep(1610, LastPerformanceCounter) ; 1800m 1770
 	SendInput {LButton}
 	; lWin32Sleep(1610, LastPerformanceCounter)

@@ -12,9 +12,7 @@ CoordMode, Pixel, Screen
 ;---SHRINE TO CL---
 #IfWinActive Warframe
 7::	
-	;Gosub, ShrineToClHigh
 	;Gosub, ShrineToClLow
-	;Gosub, ShrineToCl
 	Gosub, ShrineToClOld
 	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
 Return
