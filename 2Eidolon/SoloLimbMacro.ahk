@@ -27,6 +27,22 @@ ManualPPRZ:
     SendInput {Del}
 Return
 
+ManualPPRZMore: 
+    DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+    SendInput {MButton}
+    DllCall("Kernel32\Sleep", "UInt", 530)
+    SendInput {MButton}
+    lSleep(1585, FirstPropaMoment)
+    SendInput {LButton Down}
+    SendInput {e}
+    SendInput {CtrlUp}
+    DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+    ;lSleep(ZenithShot+EmoteOffset)
+    lsleep(88)
+    SendInput {LButton Up}
+    SendInput {Del}
+Return
+
 ManualPPRZLess: 
     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
     SendInput {MButton}
@@ -38,7 +54,7 @@ ManualPPRZLess:
     SendInput {CtrlUp}
     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
     ;lSleep(ZenithShot+EmoteOffset)
-    lsleep(83)
+    lsleep(84)
     SendInput {LButton Up}
     SendInput {Del}
 Return
@@ -98,7 +114,7 @@ LoopSoloGarry:
 Return
 
 LoopSoloHarry: 
-    Gosub, ManualPPRZ
+    Gosub, ManualPPRZLess
     Sleep 12000
     if (StopLoop == True) {
         StopLoop := False
@@ -106,7 +122,7 @@ LoopSoloHarry:
     }
     lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
     loop 3 {
-        Gosub, ManualPPRZ
+        Gosub, ManualPPRZMore
         Sleep 12000
         if (StopLoop == True) {
             StopLoop := False
