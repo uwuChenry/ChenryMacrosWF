@@ -4,11 +4,11 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-global fps := 300
+global fps := 200
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
 
-global TestTime := 8000/290
+;global TestTime := 8000/290
 
 asdddf:
 Return
@@ -21,14 +21,15 @@ ManualPPRZ:
     lSleep(1585, FirstPropaMoment)
     SendInput {LButton Down}
     SendInput {e}
-    SendInput {CtrlUp}
+    ;SendInput {CtrlUp}
     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-    lSleep(ZenithShot+EmoteOffset)
+    lSleep(ZenithShot+EmoteOffset)     
+    ;lSleep(80)
     SendInput {LButton Up}
     SendInput {Del}
 Return
 
-ManualPPRZSleep: 
+ManualPPRZFirst: 
     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
     SendInput {MButton}
     DllCall("Kernel32\Sleep", "UInt", 530)
@@ -42,7 +43,55 @@ ManualPPRZSleep:
     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
 Return
 
+; ManualPPRZ: 
+;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+;     SendInput {MButton}
+;     DllCall("Kernel32\Sleep", "UInt", 530)
+;     SendInput {MButton}
+;     lSleep(1585, FirstPropaMoment)
+;     SendInput {LButton}
+;     SendInput {e}
+;     lSleep(10)
+;     SendInput {LButton} 
+;     lSleep(50)
+;     SendInput {Del}
+;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+; Return
 
+; ManualPPRZSleep: 
+;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+;     SendInput {MButton}
+;     DllCall("Kernel32\Sleep", "UInt", 530)
+;     SendInput {MButton}
+;     lSleep(1585, FirstPropaMoment)
+;     SendInput {LButton}
+;     SendInput {e}
+;     lSleep(60)
+;     SendInput {LButton}
+;     ;lSleep(20)
+;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+; Return
+
+; ManualPPRZSleep: 
+; 	DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+; 	SendInput {MButton}
+; 	DllCall("Kernel32\Sleep", "UInt", 530) ; Equivalent to Sleep 530 
+; 	SendInput {MButton}
+; 	lSleep(1585, FirstPropaMoment) ; Garry fps is higher since no need grab lures so 1607
+; 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
+; 	SendInput {LButton}
+; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+; 	SendInput {e}
+; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+; 	SendInput {Del}
+; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+; 	SendInput {RButton down} 
+; 	lSaveCounterAfterSleep(20, LastPerformanceCounter)
+; 	SendInput {LButton}
+; 	DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+; 	lSaveCounterAfterSleep(15, LastPerformanceCounter)
+; 	SendInput {RButton up}
+; Return
 ;--- LOOP MACROS ---
 
 LoopSoloTerry: 
@@ -61,45 +110,45 @@ LoopSoloTerry:
 Return
 
 LoopSoloGarry: 
-    Gosub, ManualPPRZSleep
+    Gosub, ManualPPRZ
     Sleep 12000
     if (StopLoop == True) {
         StopLoop := False
         Exit
     }
-    lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+    lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
     loop 3 {
-        Gosub, ManualPPRZSleep
+        Gosub, ManualPPRZ
         Sleep 12000
         if (StopLoop == True) {
             StopLoop := False
             Exit
         }
-        lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+        lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
     }
-    Gosub, ManualPPRZSleep
+    Gosub, ManualPPRZ
     CurrentLoopSubroutine := "LoopSoloHarry"
     CurrentDetector := "HarryDetector"
 Return
 
 LoopSoloHarry: 
-    Gosub, ManualPPRZSleep
+    Gosub, ManualPPRZ
     Sleep 12000
     if (StopLoop == True) {
         StopLoop := False
         Exit
     }
-    lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596 , 15586 with pprz non sleep
+    lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596 , 15586 with pprz non sleep
     loop 3 {
-        Gosub, ManualPPRZSleep
+        Gosub, ManualPPRZ
         Sleep 12000
         if (StopLoop == True) {
             StopLoop := False
             Exit
         }
-        lSleep(15571, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
+        lSleep(15586, LastLimbDestroyedTiming) ; 17186 - 1610 - 5 = 15571 15571 , 15596
     }
-    Gosub, ManualPPRZSleep
+    Gosub, ManualPPRZ
     CurrentLoopSubroutine := "LoopSoloTerry"
     CurrentDetector := ""
 Return

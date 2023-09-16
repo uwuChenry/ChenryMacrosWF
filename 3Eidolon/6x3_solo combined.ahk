@@ -32,14 +32,15 @@ Return
 ;-------------------------- RELOAD MACRO --------------------------
 
 *F3::
-	MsgBox, test
+	;MsgBox, test
+	SoundBeep
 	Reload
 Return
 
 ;-------------------------- TEST PIXELSEARCH MACRO --------------------------
 
 !4::
-	SendInput {Insert}
+	;SendInput {Insert}
 	SendInput {Tab Down}
 	Sleep, 300
 	SendInput {Tab Up}
@@ -52,6 +53,8 @@ Return
 	SendInput {x Up}
 	;Gosub, ShrineToClLow
 	Gosub, ShrineToClOld
+	lSleep(15571)
+	Gosub, %CurrentLoopSubroutine%
 Return
 
 !3::	
