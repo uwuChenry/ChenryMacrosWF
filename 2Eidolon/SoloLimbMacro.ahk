@@ -21,75 +21,32 @@ ManualPPRZ:
     lSleep(1585, FirstPropaMoment)
     SendInput {F5 Down}
     SendInput {e}
-    ;SendInput {CtrlUp}
     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
     lSleep(ZenithShot+EmoteOffset)
-    ;lsleep(86)
     SendInput {F5 Up}
     SendInput {Del}
 Return
 
-; ManualPPRZTest: 
-;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-;     SendInput {MButton}
-;     DllCall("Kernel32\Sleep", "UInt", 530)
-;     SendInput {MButton}
-;     lSleep(1585, FirstPropaMoment)
-;     SendInput {LButton Down}
-;     SendInput {e}
-;     SendInput {CtrlUp}
-;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-;     ;lSleep(ZenithShot+EmoteOffset)
-;     lsleep(TestTime+EmoteOffset)
-;     SendInput {LButton Up}
-;     SendInput {Del}
-; Return
-
-; ManualPPRZMore: 
-;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-;     SendInput {MButton}
-;     DllCall("Kernel32\Sleep", "UInt", 530)
-;     SendInput {MButton}
-;     lSleep(1585, FirstPropaMoment)
-;     SendInput {LButton Down}
-;     SendInput {e}
-;     SendInput {CtrlUp}
-;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-;     ;lSleep(ZenithShot+EmoteOffset)
-;     lsleep(88)
-;     SendInput {LButton Up}
-;     SendInput {Del}
-; Return
-
-; ManualPPRZLess: 
-;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-;     SendInput {F7}
-;     DllCall("Kernel32\Sleep", "UInt", 530)
-;     SendInput {F7}
-;     lSleep(1585, FirstPropaMoment)
-;     SendInput {F5 Down}
-;     SendInput {e}
-;     ;SendInput {CtrlUp}
-;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-;     lSleep(ZenithShot+EmoteOffset)
-;     ;lsleep(84)
-;     SendInput {F5 Up}
-;     SendInput {Del}
-; Return
-
-; ManualPPRZSleep: 
-;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-;     SendInput {MButton}
-;     DllCall("Kernel32\Sleep", "UInt", 530)
-;     SendInput {MButton}
-;     lSleep(1585, FirstPropaMoment)
-;     SendInput {LButton}
-;     SendInput {e}
-;     lSleep(40)
-;     SendInput {LButton}
-;     lSleep(20)
-;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-; Return
+PPRZTest:
+    DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+    SendInput {F7}
+    lSleep(1585, FirstPropaMoment)
+    DllCall("QueryPerformanceCounter", "Int64*", RaplakMoment) 
+    SendInput {F5 Down}{5}
+    lSleep(875, RaplakMoment)
+    SendInput {F5 Up}
+    ; Loop 3{
+    ;     ;SendInput {F5}
+    ;     lSleep(5)
+    ; }
+    ; lSleep(350)
+    ; SendInput {e}
+    ; lSleep(50)
+    ; SendInput {Del}
+    ; lSleep(50)
+    ; SendInput {Del}
+    DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+Return
 
 
 ;--- LOOP MACROS ---
@@ -158,7 +115,7 @@ Return
 
 LoopMacroedZeroed:
     if (CurrentLoopSubroutine == "LoopSoloTerry") {
-        CurrentLoopSubroutine := "ManualPPRZ"
+        CurrentLoopSubroutine := "PPRZTest"
         SavedLoopSubroutine := "LoopSoloGarry"
         SavedDetector := "GarryDetector"
         StopLoop := True

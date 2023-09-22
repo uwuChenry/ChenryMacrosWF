@@ -14,9 +14,48 @@ CoordMode, Pixel, Screen
 7::	
 	;Gosub, ShrineToClLow
 	Gosub, ShrineToClOld
+	lSleep(400)
+	Gosub, ResetPPRZFromArchwing
 	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
 Return
 
+#IfWinActive Warframe
+8::	
+	;Gosub, ShrineToClLow
+	Gosub, ResetPPRZFromArchwing
+	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
+Return
+
+k::
+CancelAnimation:
+    SendInput, {Blind}{rbutton Down}
+    lSleep(100)
+    SendInput, {Blind}{rbutton Up}
+    lSleep(50)
+
+	DllCall("QueryPerformanceCounter", "Int64*", FirstEmotion)
+    SendInput, {Blind}{F8}
+    lSleep(-1, FirstEmotion)
+    loop, 50 {
+        SendInput, {Blind}{5}
+    }
+	DllCall("QueryPerformanceCounter", "Int64*", Operator)
+    SendInput, {Blind}{s Down}
+    lSleep(500, Operator)
+    SendInput, {Blind}{s Up}
+	DllCall("QueryPerformanceCounter", "Int64*", SecondEmotion)
+    SendInput, {Blind}{f8}
+    lSleep(-1, SecondEmotion)
+    loop, 50 {
+        SendInput, {Blind}{5}
+    }
+	DllCall("QueryPerformanceCounter", "Int64*", Operator2)
+    lSleep(50, Operator2)
+    Loop, 25 {
+        SendInput, {Blind}{Space}
+        lSleep(1)
+    }
+return
 
 
 ;-------------------------- LIMB MACROS --------------------------
@@ -46,14 +85,17 @@ Return
 	Critical, On
 	loop {
 		SendInput x
-		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 40, Fast RGB ; Detect if shard has appeared
+		pixelSearch, PX, PY, 1010, 600, 1040, 640, 0xCA4538, 50, Fast RGB ; Detect if shard has appeared
 	} until (ErrorLevel == 0)
 	Critical, Off
 	SendInput {x Up}
 	
 	;Gosub, ShrineToClLow
 	Gosub, ShrineToClOld
-	lSleep(15571)
+	DllCall("QueryPerformanceCounter", "Int64*", thing)
+	lSleep(400)
+	Gosub, ResetPPRZFromArchwing
+	lSleep(15571, thing)
 	Gosub, %CurrentLoopSubroutine%
 Return
 
