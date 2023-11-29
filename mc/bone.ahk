@@ -28,9 +28,9 @@ bone:
 	SendInput {4}
 	lSleep(50)
 	SendInput {RButton}
-	lSleep(70)
+	lSleep(270)
 	SendInput {f}
-	Loop, 10 {
+	Loop, 8 {
 		SendInput {RButton}
 		lSleep(100)
 	}
@@ -42,27 +42,4 @@ bone:
 	lSleep(100)
 	SendInput {LButton}
 Return
-
-; bone:
-; 	SendInput {1}
-; 	lSleep(50)
-; 	SendInput {RButton}
-; 	lSleep(300)
-; 	SendInput {4}
-; 	lSleep(70)
-; 	SendInput {RButton}
-; 	lSleep(70)
-; 	SendInput {f}
-; 	Loop, 13 {
-; 		SendInput {RButton}
-; 		lSleep(100)
-; 	}
-; 	SendInput {r}
-; 	lSleep(50)	
-; 	SendInput {RButton}
-; 	lSleep(100)
-; 	SendInput {3}
-; 	lSleep(100)
-; 	SendInput {LButton}
-; Return
 
