@@ -30,7 +30,7 @@ Ins::
 
 
 HeatCore:
-	Send, 3.59m
+	Send, 3.64m
 Return
 
 
