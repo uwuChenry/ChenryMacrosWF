@@ -53,6 +53,36 @@ bone:
 	SendInput {LButton}
 Return
 
+reaperWD:
+	SendInput {v}
+	lSleep(30)
+	SendInput {RButton}
+	lSleep(750)
+	SendInput {6 Down}
+	lSleep(50)
+	SendInput {6 Up}
+	lSleep(600)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", -40, "UInt", 0)
+	lSleep(30)
+	SendInput {LButton}
+	lSleep(250)
+	SendInput {e}
+	lSleep(100)
+	SendInput {LShift Down}
+	lSleep(100)
+	SendInput {LShift Up}
+	SendInput {6 down}
+	lSleep(50)
+	SendInput {6 Up}
+	lSleep(600)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", -40, "UInt", 0)
+	lSleep(30)
+	SendInput {LButton}
+	lSleep(300)
+	SendInput {e}
+Return
+
+
 reaper:
 	SendInput {v}
 	lSleep(30)
