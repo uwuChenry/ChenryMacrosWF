@@ -21,7 +21,7 @@ PgUp::
 Return
 
 PgDn::
-	Gosub, reaperST
+	Gosub, reaper
 Return
 
 Ins::
@@ -40,7 +40,7 @@ bone:
 	SendInput {RButton}
 	lSleep(270)
 	SendInput {f}
-	Loop, 8 {
+	Loop, 9 {
 		SendInput {RButton}
 		lSleep(100)
 	}
@@ -48,21 +48,23 @@ bone:
 	lSleep(50)	
 	SendInput {RButton}
 	lSleep(100)
-	SendInput {3}
+	SendInput {4}
 	lSleep(100)
 	SendInput {LButton}
+	lSleep(100)
+	SendInput {3}
 Return
 
 reaperWD:
 	SendInput {v}
 	lSleep(30)
 	SendInput {RButton}
-	lSleep(750)
+	lSleep(850)
 	SendInput {6 Down}
 	lSleep(50)
 	SendInput {6 Up}
-	lSleep(600)
-	DllCall("mouse_event", "UInt", 0x01, "UInt", -40, "UInt", 0)
+	lSleep(550)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", 170, "UInt", -30)
 	lSleep(30)
 	SendInput {LButton}
 	lSleep(250)
@@ -74,8 +76,8 @@ reaperWD:
 	SendInput {6 down}
 	lSleep(50)
 	SendInput {6 Up}
-	lSleep(600)
-	DllCall("mouse_event", "UInt", 0x01, "UInt", -40, "UInt", 0)
+	lSleep(550)
+	DllCall("mouse_event", "UInt", 0x01, "UInt", 100, "UInt", -30)
 	lSleep(30)
 	SendInput {LButton}
 	lSleep(300)
@@ -128,7 +130,6 @@ reaper:
 	DllCall("mouse_event", "UInt", 0x01, "UInt", -60, "UInt", 0)
 	lSleep(250)
 	SendInput {LButton}
-	
 	lSleep(50)
 	SendInput {e}
 Return
