@@ -24,13 +24,13 @@ PgDn::
 	Gosub, reaper
 Return
 
-Ins::
+*Ins::
 	Gosub, bone
 	Return
 
 
 HeatCore:
-	Send, 3.64m
+	Send, 3.89m
 Return
 
 
@@ -40,7 +40,7 @@ bone:
 	SendInput {RButton}
 	lSleep(270)
 	SendInput {f}
-	Loop, 9 {
+	Loop, 10 {
 		SendInput {RButton}
 		lSleep(100)
 	}
@@ -48,11 +48,11 @@ bone:
 	lSleep(50)	
 	SendInput {RButton}
 	lSleep(100)
-	SendInput {4}
+	SendInput {3}
 	lSleep(100)
 	SendInput {LButton}
-	lSleep(100)
-	SendInput {3}
+	; lSleep(100)
+	; SendInput {3}
 Return
 
 reaperWD:
