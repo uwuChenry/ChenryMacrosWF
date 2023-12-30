@@ -30,7 +30,7 @@ Return
 
 
 HeatCore:
-	Send, 4.39m
+	Send, 4.3m
 Return
 
 
@@ -64,7 +64,7 @@ reaperWD2:
 	SendInput {6 Up}
 	Start := A_TickCount
 	loop {
-		if (A_TickCount - Start > 1000){
+		if (A_TickCount - Start > 700){
 			SoundBeep
 			lSleep(20)
 			SoundBeep  
@@ -74,7 +74,7 @@ reaperWD2:
 	} until (ErrorLevel == 0)
 	DllCall("SetCursorPos", "int", 1176, "int", 503)
 	SoundBeep 
-	lSleep(30)
+	lSleep(10)
 	SendInput {LButton}
 	lSleep(50)
 	SendInput {e}
@@ -90,7 +90,7 @@ reaperWD2:
 	} until (ErrorLevel == 0)
 	DllCall("SetCursorPos", "int", 1068, "int", 503)
 	SoundBeep 
-	lSleep(30)
+	lSleep(10)
 	SendInput {LButton}
 	lSleep(30)
 	SendInput {e}

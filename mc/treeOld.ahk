@@ -18,6 +18,66 @@ Reload
 Return
 
 
+
+treeFuncMonkey(){
+SendInput {RButton Down}
+SendInput {2}
+lSleep(50)
+SendInput {a Down}
+lsleep(200)
+SendInput {a Up}
+lSleep(250)
+SendInput {d Down}
+lSleep(200)
+SendInput {d up}
+lSleep(200)
+SendInput {3}
+lSleep(250)
+SendInput {v}
+lSleep(200)
+SendInput {4}
+lSleep(200)
+SendInput {LButton}
+SendInput {RButton Up}
+Return
+}
+
+
+
+treeFuncMonkey2(){
+SendInput {2}
+lSleep(50)
+SendInput {RButton}
+SendInput {a Down}
+lSleep(50)
+SendInput {RButton}
+lSleep(25)
+SendInput {a Up}
+lSleep(50)
+Loop, 2{
+	SendInput {RButton}
+	lSleep(75)
+}
+SendInput {d Down}
+SendInput {RButton}
+lSleep(75)
+SendInput {d up}
+SendInput {RButton}
+lSleep(50)
+SendInput {RButton}
+lSleep(50)
+SendInput {3}
+SendInput {RButton Down}
+lSleep(100)
+SendInput {v}
+lSleep(350)
+SendInput {4}
+lSleep(100)
+SendInput {RButton Up}
+SendInput {LButton}
+Return
+}
+
 treeFuncMonkey3(){
 SendInput {2}
 lSleep(50)
@@ -83,11 +143,10 @@ lSleep(400)
 Return
 }
 
-
-
 PgUp::
 	treeFuncMonkey3()
 Return
+
 
 PgDn::
 	abilitySpam := !abilitySpam
@@ -102,3 +161,46 @@ PgDn::
 		SoundBeep
 	}
 Return
+
+treeFunc(){
+SendInput {2}
+lSleep(50)
+SendInput {a Down}
+SendInput {RButton Down}
+lsleep(200)
+SendInput {a Up}
+lSleep(300)
+SendInput {d Down}
+lSleep(200)
+SendInput {d up}
+lSleep(300)
+SendInput {3}
+lSleep(400)
+SendInput {4}
+lSleep(300)
+SendInput {RButton Up}
+SendInput {LButton}
+Return
+}
+
+tree:
+SendInput {2}
+lSleep(50)
+SendInput {a Down}
+SendInput {RButton Down}
+lsleep(200)
+SendInput {a Up}
+lSleep(300)
+SendInput {d Down}
+lSleep(200)
+SendInput {d up}
+lSleep(300)
+SendInput {3}
+lSleep(400)
+SendInput {4}
+lSleep(300)
+SendInput {RButton Up}
+SendInput {LButton}
+Return
+
+
