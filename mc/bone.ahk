@@ -11,8 +11,9 @@ ListLines Off ; Increase performance by a few percent by not logging the lines o
 
 
 
+
 !e::
-	MsgBox, test
+	MsgBox, boneeeeeee
 Reload
 Return
 
@@ -20,11 +21,11 @@ PgUp::
 	Gosub, HeatCore
 Return
 
-PgDn::
+F13::
 	Gosub, reaperWD2
 Return
 
-*Ins::
+*F14::
 	Gosub, bone
 	Return
 
@@ -44,6 +45,26 @@ bone:
 		SendInput {RButton}
 		lSleep(100)
 	}
+	SendInput {r}
+	lSleep(50)	
+	SendInput {RButton}
+	lSleep(100)
+	SendInput {3}
+	lSleep(50)
+	SendInput {LButton}
+Return
+
+boneHold:
+	SendInput {4}
+	lSleep(50)
+	SendInput {RButton}
+	lSleep(270)
+	SendInput {f}
+	lSleep(400)
+	SendInput {RButton Down}
+	lSleep(450)
+	SendInput {RButton Up}
+	lSleep(50)
 	SendInput {r}
 	lSleep(50)	
 	SendInput {RButton}
@@ -92,6 +113,6 @@ reaperWD2:
 	SoundBeep 
 	lSleep(10)
 	SendInput {LButton}
-	lSleep(30)
+	lSleep(300)
 	SendInput {e}
 Return
