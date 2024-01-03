@@ -10,6 +10,8 @@ ListLines Off ; Increase performance by a few percent by not logging the lines o
 
 
 
+global abilitySpam := false
+global abilityDelay := 2800 ;1400
 
 
 !e::
@@ -97,15 +99,6 @@ reaperWD2:
 	SendInput {e}
 Return
 
-
-
-global abilitySpam := false
-global abilityDelay := 2800 ;1400
-
-!r::
-	MsgBox, treeeeeeeeee
-Reload
-Return
 
 
 treeFuncMonkey3(){

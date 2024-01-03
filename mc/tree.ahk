@@ -7,7 +7,9 @@ ListLines Off ; Increase performance by a few percent by not logging the lines o
 #InstallKeybdHook
 
 #include SleepFunctions.ahk
+#include ShinsImageScanClass.ahk
 
+scan := new ShinsImageScanClass()
 
 global abilitySpam := false
 global abilityDelay := 2800 ;1400
