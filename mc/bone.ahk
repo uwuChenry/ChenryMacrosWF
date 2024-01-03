@@ -26,13 +26,15 @@ Return
 
 F13::
 	Gosub, ReaperWD2
+	; Gosub, dogReaper
 Return
 
 ;* f14 
 
 *F14::
 	Gosub, bone
-	Return
+	; Gosub, boneDog
+Return
 
 
 HeatCore:
