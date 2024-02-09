@@ -38,7 +38,7 @@ Return
 
 
 HeatCore:
-	Send, 4.3m
+	Send, 4.248m
 Return
 
 dogReaper:
@@ -46,13 +46,13 @@ dogReaper:
 	SendInput {v} ;chim axe
 	lSleep(30)
 	SendInput {RButton}
-	lSleep(1200)
+	lSleep(600)
 	SendInput {6 Down} ;6 = wardrobe
 	lSleep(60)
 	SendInput {6 Up}
 	Start := A_TickCount
 	loop {
-		if (A_TickCount - Start > 500){
+		if (A_TickCount - Start > 700){
 			SoundBeep
 			lSleep(20)
 			SoundBeep  
@@ -97,11 +97,13 @@ boneDog:
 	SendInput {4} ; bone
 	lSleep(50)
 	SendInput {RButton}
-	lSleep(50)
+	lSleep(100)
 	SendInput {f} ; mace
+	SendInput {LShift up}
 	SendInput {6 Down} ;6 = wardrobe
 	lSleep(60)
 	SendInput {6 Up}
+	SendInput {LShift up}
 	Start := A_TickCount
 	loop {
 		if (A_TickCount - Start > 500){
@@ -114,16 +116,22 @@ boneDog:
 		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
 	} until (ErrorLevel == 0)
 	DllCall("SetCursorPos", "int", 1068, "int", 503)
+		SendInput {LShift up}
 	SoundBeep 
 	lSleep(10)
+		SendInput {LShift up}
 	SendInput {LButton}
 	lSleep(300)
 	SendInput {e}
-	lSleep(500)
+	lSleep(600)
+	SendInput {1}
+	lSleep(50)
+	SendInput {RButton}
+	lSleep(50)
 	SendInput {r} ; endstone
 	lSleep(50)	
 	SendInput {RButton}
-	lSleep(100)
+	lSleep(50)
 	SendInput {3} ;juju
 	lSleep(50)
 	SendInput {LButton}
@@ -135,7 +143,7 @@ bone:
 	SendInput {RButton}
 	lSleep(270)
 	SendInput {f} ; mace
-	Loop, 11 {
+	Loop, 9 {
 		SendInput {RButton}
 		lSleep(100)
 	}
@@ -173,13 +181,20 @@ reaperWD2:
 	SendInput {v} ;chim axe
 	lSleep(30)
 	SendInput {RButton}
-	lSleep(1200)
+	lSleep(1300)
 	SendInput {6 Down} ;6 = wardrobe
 	lSleep(60)
 	SendInput {6 Up}
 	Start := A_TickCount
+	firstTime := True
 	loop {
-		if (A_TickCount - Start > 500){
+		; if (A_TickCount - Start > 600 && firstTime){
+		; 	SendInput {6 Down} ;6 = wardrobe
+		; 	lSleep(60)
+		; 	SendInput {6 Up}
+		; 	firstTime := false
+		; }
+		if (A_TickCount - Start > 1300){
 			SoundBeep
 			lSleep(20)
 			SoundBeep  
@@ -188,10 +203,12 @@ reaperWD2:
 		;pixel search numbers x1, y1, x2, y2, color code, tolerace
 		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
 	} until (ErrorLevel == 0)
+	BlockInput, On
 	DllCall("SetCursorPos", "int", 1176, "int", 503)
-	SoundBeep 
 	lSleep(10)
 	SendInput {LButton}
+	BlockInput, Off
+	SoundBeep 
 	lSleep(50)
 	SendInput {e}
 	lSleep(350)
@@ -202,6 +219,7 @@ reaperWD2:
 	SendInput {6 Up}
 	SendInput {LShift Up}
 	; Start2 := A_TickCount
+
 	loop {
 		; if (A_TickCount - Start2 > 500){
 		; 	SoundBeep
@@ -212,10 +230,12 @@ reaperWD2:
 		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
 		; 
 	} until (ErrorLevel == 0)
+	BlockInput, On
 	DllCall("SetCursorPos", "int", 1068, "int", 503)
-	SoundBeep 
 	lSleep(10)
 	SendInput {LButton}
-	lSleep(300)
+	BlockInput, Off
+	SoundBeep 
+	lSleep(200)
 	SendInput {e}
 Return
