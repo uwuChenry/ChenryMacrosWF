@@ -38,7 +38,7 @@ Return
 
 
 HeatCore:
-	Send, 4.248m
+	Send, 4.198m
 Return
 
 dogReaper:
