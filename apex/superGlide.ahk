@@ -10,7 +10,7 @@ ListLines Off ; Increase performance by a few percent by not logging the lines o
 
 
 !e::
-	MsgBox, boneeeeeee
+	MsgBox, superglide
 Reload
 Return
 
