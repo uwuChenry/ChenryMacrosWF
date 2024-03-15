@@ -34,6 +34,14 @@ Return
 
 superGlide:
 	SendInput {Space}
-	lSleep(5)
+	lSleep(6)
 	SendInput {LCtrl}
+	; lSleep(40)
+	; SendInput {Space}
+	; lSleep(6)
+	; SendInput {LCtrl}
+	; lSleep(40)
+	; SendInput {Space}
+	; lSleep(6)
+	; SendInput {LCtrl}
 Return
