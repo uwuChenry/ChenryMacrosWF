@@ -20,28 +20,8 @@ x::
 Return
 
 
-
-; #IfWinActive Apex Legends
-; XButton2::
-; while (GetKeyState("XButton2", "P")){
-; 	SendInput {w}
-; 	lSleep(40)
-; }
-; Return
-
-
-
-
 superGlide:
 	SendInput {Space}
 	lSleep(6)
 	SendInput {LCtrl}
-	; lSleep(40)
-	; SendInput {Space}
-	; lSleep(6)
-	; SendInput {LCtrl}
-	; lSleep(40)
-	; SendInput {Space}
-	; lSleep(6)
-	; SendInput {LCtrl}
 Return
