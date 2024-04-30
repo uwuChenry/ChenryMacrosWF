@@ -12,12 +12,28 @@ CoordMode, Pixel, Screen
 ;---SHRINE TO CL---
 #IfWinActive Warframe
 7::	
-	Gosub, ShrineToClLow
+	;Gosub, ShrineToClLow
 	;Gosub, ShrineToClOld
-	lSleep(500)
+	; lSleep(500)
 	;Gosub, ResetPPRZFromArchwing
-	Gosub, ResetPPRZFromGround
+	; Gosub, ResetPPRZFromGround
 	;Gosub, %CurrentDetector% ; Loop limb macro should change to suitable detector. If not make a hotkey to set the detector yourself
+	SendInput {F6 Down}
+	SendInput {e}
+	;SendInput {3}
+	lSleep(20)
+	SendInput {w Down}
+	SendInput {d Down}
+	; lSleep(10)
+	SendInput {F6 Up}
+	SendInput {5}
+	lSleep(160)
+	SendInput {F7}
+	SendInput {e}
+	SendInput {w Up}
+	SendInput {d Up}
+	SendInput {2}
+
 Return
 
 

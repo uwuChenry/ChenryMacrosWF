@@ -25,156 +25,22 @@ PgUp::
 Return
 
 F13::
-	Gosub, ReaperWD2
+	Gosub, reaperEQ2
 	; Gosub, dogReaper
 Return
 
-;* f14 
-
 *F14::
-	Gosub, bone
-	; Gosub, boneDog
+	While (GetKeyState("F14", "P")){
+		SendInput {LButton}
+		lsleep(120)
+	}
 Return
 
 
 HeatCore:
-	Send, 4.189m
+	Send, 3.899m
 Return
 
-dogReaper:
-	SoundBeep	
-	SendInput {v} ;chim axe
-	lSleep(30)
-	SendInput {RButton}
-	lSleep(600)
-	SendInput {6 Down} ;6 = wardrobe
-	lSleep(60)
-	SendInput {6 Up}
-	Start := A_TickCount
-	loop {
-		if (A_TickCount - Start > 700){
-			SoundBeep
-			lSleep(20)
-			SoundBeep  
-    		Return
-		}
-		;pixel search numbers x1, y1, x2, y2, color code, tolerace
-		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
-	} until (ErrorLevel == 0)
-	DllCall("SetCursorPos", "int", 1176, "int", 503)
-	SoundBeep 
-	lSleep(10)
-	SendInput {LButton}
-	lSleep(50)
-	SendInput {e}
-	lSleep(350)
-	SendInput {LShift Down}
-	lSleep(100)
-	SendInput {6 down}
-	lSleep(60)
-	SendInput {6 Up}
-	SendInput {LShift Up}
-	; Start2 := A_TickCount
-	loop {
-		; if (A_TickCount - Start2 > 500){
-		; 	SoundBeep
-		; 	lSleep(20)
-		; 	SoundBeep  
-    	; 	Return
-		; }
-		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
-		; 
-	} until (ErrorLevel == 0)
-	DllCall("SetCursorPos", "int", 906, "int", 503)
-	SoundBeep 
-	lSleep(10)
-	SendInput {LButton}
-	lSleep(300)
-	SendInput {e}
-Return
-
-boneDog:
-	SendInput {4} ; bone
-	lSleep(50)
-	SendInput {RButton}
-	lSleep(100)
-	SendInput {f} ; mace
-	SendInput {LShift up}
-	SendInput {6 Down} ;6 = wardrobe
-	lSleep(60)
-	SendInput {6 Up}
-	SendInput {LShift up}
-	Start := A_TickCount
-	loop {
-		if (A_TickCount - Start > 500){
-			SoundBeep
-			lSleep(20)
-			SoundBeep  
-    		Return
-		}
-		;pixel search numbers x1, y1, x2, y2, color code, tolerace
-		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
-	} until (ErrorLevel == 0)
-	DllCall("SetCursorPos", "int", 1068, "int", 503)
-		SendInput {LShift up}
-	SoundBeep 
-	lSleep(10)
-		SendInput {LShift up}
-	SendInput {LButton}
-	lSleep(300)
-	SendInput {e}
-	lSleep(600)
-	SendInput {1}
-	lSleep(50)
-	SendInput {RButton}
-	lSleep(50)
-	SendInput {r} ; endstone
-	lSleep(50)	
-	SendInput {RButton}
-	lSleep(50)
-	SendInput {3} ;juju
-	lSleep(50)
-	SendInput {LButton}
-Return
-
-bone:
-	SendInput {4} ; bone
-	lSleep(50)
-	SendInput {RButton}
-	lSleep(270)
-	SendInput {f} ; mace
-	Loop, 9 {
-		SendInput {RButton}
-		lSleep(100)
-	}
-	SendInput {r} ; endstone
-	lSleep(50)	
-	SendInput {RButton}
-	lSleep(100)
-	SendInput {3} ;juju
-	lSleep(50)
-	SendInput {LButton}
-Return
-
-boneHold:
-	SendInput {4}
-	lSleep(50)
-	SendInput {RButton}
-	lSleep(270)
-	SendInput {f}
-	lSleep(400)
-	SendInput {RButton Down}
-	lSleep(450)
-	SendInput {RButton Up}
-	lSleep(50)
-	SendInput {r}
-	lSleep(50)	
-	SendInput {RButton}
-	lSleep(100)
-	SendInput {3}
-	lSleep(50)
-	SendInput {LButton}
-Return
 
 reaperWD2:
 	SoundBeep	
@@ -188,13 +54,7 @@ reaperWD2:
 	Start := A_TickCount
 	firstTime := True
 	loop {
-		; if (A_TickCount - Start > 600 && firstTime){
-		; 	SendInput {6 Down} ;6 = wardrobe
-		; 	lSleep(60)
-		; 	SendInput {6 Up}
-		; 	firstTime := false
-		; }
-		if (A_TickCount - Start > 1300){
+		if (A_TickCount - Start > 600){
 			SoundBeep
 			lSleep(20)
 			SoundBeep  
@@ -218,17 +78,8 @@ reaperWD2:
 	lSleep(60)
 	SendInput {6 Up}
 	SendInput {LShift Up}
-	; Start2 := A_TickCount
-
 	loop {
-		; if (A_TickCount - Start2 > 500){
-		; 	SoundBeep
-		; 	lSleep(20)
-		; 	SoundBeep  
-    	; 	Return
-		; }
 		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
-		; 
 	} until (ErrorLevel == 0)
 	BlockInput, On
 	DllCall("SetCursorPos", "int", 1068, "int", 503)
@@ -237,5 +88,94 @@ reaperWD2:
 	BlockInput, Off
 	SoundBeep 
 	lSleep(200)
+	SendInput {e}
+Return
+
+
+reaperEQ2:	
+	SendInput {v} ;chim axe
+	lSleep(20)
+	SendInput {RButton}
+	lSleep(30)
+	SendInput {5 Down} ;6 = wardrobe
+	lSleep(60)
+	SendInput {5 Up}
+	Start := A_TickCount
+	loop {
+		if (A_TickCount - Start > 600){
+			SoundBeep
+			lSleep(20)
+			SoundBeep  
+    		Return
+		}
+		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 863, "int", 651)
+	lSleep(10)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 809, "int", 651)
+	lSleep(330)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 743, "int", 651)
+	lSleep(300)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	lSleep(50)
+	SendInput {e}
+	lSleep(50)
+	SendInput {LShift Down}
+	lSleep(200)
+	SendInput {5 down}
+	lSleep(60)
+	SendInput {5 Up}
+	SendInput {LShift Up}
+	loop {
+		pixelSearch, x, y, 699, 855, 702, 861, 0xFF51FF, 5, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 863, "int", 651)
+	lSleep(10)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 809, "int", 651)
+	lSleep(300)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	DllCall("SetCursorPos", "int", 743, "int", 651)
+	lSleep(300)
+	SendInput {LButton}
+	Loop {
+		pixelSearch, x, y, 878, 864, 880, 866, 0xFF51FF, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	Loop {
+		pixelSearch, x, y, 972, 1005, 974, 1007, 0x140514, 10, Fast RGB 
+	} until (ErrorLevel == 0)
+	lSleep(50)
 	SendInput {e}
 Return
