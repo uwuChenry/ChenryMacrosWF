@@ -24,8 +24,12 @@ PgUp::
 	Gosub, HeatCore
 Return
 
+!r::
+	Gosub, testslot
+Return
+
 F13::
-	Gosub, reaperEQ2
+	Gosub, reaperWD3
 	; Gosub, dogReaper
 Return
 
@@ -38,9 +42,102 @@ Return
 
 
 HeatCore:
-	Send, 3.899m
+	Send, 4.889m
 Return
 
+SearchCurrentSlot(){
+	pixelSearch, x, y, 1029, 660, 10221528, 704, 0x76c610, 20, Fast RGB 
+	if (x > 1471) 
+		{
+			Return 9
+		}
+	if (x > 1415) 
+		{
+			Return 8
+		}
+	if (x > 1363) 
+		{
+			Return 7
+		}
+	if (x > 1308) 
+		{
+			Return 6
+		}
+	if (x > 1256) 
+		{
+			Return 5
+		}
+	if (x > 1200) 
+		{
+			Return 4
+		}
+	if (x > 1150) 
+		{
+			Return 3
+		}
+	if (x > 1100) 
+		{
+			Return 2
+		}
+	else 
+	{
+		Return 1
+	}	
+}
+
+testslot:
+	a:=SearchCurrentSlot()
+	MsgBox, % "test: " a
+Return
+
+reaperWD3:
+SoundBeep	
+SendInput {v} ;chim axe
+lSleep(30)
+SendInput {RButton}
+lSleep(600)
+SendInput {6 Down} ;6 = wardrobe
+lSleep(60)
+SendInput {6 Up}
+Start := A_TickCount
+firstTime := True
+loop {
+	if (A_TickCount - Start > 600){
+		SoundBeep
+		lSleep(20)
+		SoundBeep  
+		Return
+	}
+	;pixel search numbers x1, y1, x2, y2, color code, tolerace
+	pixelSearch, x, y, 1020, 977, 1022, 979, 0xFF51FF, 5, Fast RGB 
+} until (ErrorLevel == 0)
+BlockInput, On
+DllCall("SetCursorPos", "int", 1576, "int", 694)
+slot := SearchCurrentSlot()
+BlockInput, Off
+SendInput {9 down}
+lSleep(60)
+SendInput {9 Up}
+SoundBeep 
+lSleep(100)
+SendInput {e}
+lSleep(350)
+SendInput {LShift Down}
+lSleep(100)
+SendInput {6 down}
+lSleep(60)
+SendInput {6 Up}
+SendInput {LShift Up}
+loop {
+	pixelSearch, x, y, 1020, 977, 1022, 979, 0xFF51FF, 5, Fast RGB 
+} until (ErrorLevel == 0)
+SendInput {%slot% down}
+lSleep(60)
+SendInput {%slot% up}
+SoundBeep 
+lSleep(100)
+SendInput {e}
+Return
 
 reaperWD2:
 	SoundBeep	
