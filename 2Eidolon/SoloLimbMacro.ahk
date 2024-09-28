@@ -4,7 +4,7 @@ global SavedDetector := ""
 global LastLimbDestroyedTiming := 0
 global StopLoop := False
 
-global fps := 300
+global fps := 300   
 global ZenithShot := 8000/fps
 global EmoteOffset := 60
 
@@ -27,26 +27,26 @@ ManualPPRZ:
     SendInput {Del}
 Return
 
-PPRZTest:
-    DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
-    SendInput {F7}
-    lSleep(1585, FirstPropaMoment)
-    DllCall("QueryPerformanceCounter", "Int64*", RaplakMoment) 
-    SendInput {F5 Down}{5}
-    lSleep(875, RaplakMoment)
-    SendInput {F5 Up}
-    ; Loop 3{
-    ;     ;SendInput {F5}
-    ;     lSleep(5)
-    ; }
-    ; lSleep(350)
-    ; SendInput {e}
-    ; lSleep(50)
-    ; SendInput {Del}
-    ; lSleep(50)
-    ; SendInput {Del}
-    DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
-Return
+; PPRZTest:
+;     DllCall("QueryPerformanceCounter", "Int64*", FirstPropaMoment) 
+;     SendInput {F7}
+;     lSleep(1585, FirstPropaMoment)
+;     DllCall("QueryPerformanceCounter", "Int64*", RaplakMoment) 
+;     SendInput {F5 Down}{5}
+;     lSleep(875, RaplakMoment)
+;     SendInput {F5 Up}
+;     ; Loop 3{
+;     ;     ;SendInput {F5}
+;     ;     lSleep(5)
+;     ; }
+;     ; lSleep(350)
+;     ; SendInput {e}
+;     ; lSleep(50)
+;     ; SendInput {Del}
+;     ; lSleep(50)
+;     ; SendInput {Del}
+;     DllCall("QueryPerformanceCounter", "Int64*", LastLimbDestroyedTiming) 
+; Return
 
 
 ;--- LOOP MACROS ---
@@ -115,7 +115,7 @@ Return
 
 LoopMacroedZeroed:
     if (CurrentLoopSubroutine == "LoopSoloTerry") {
-        CurrentLoopSubroutine := "PPRZTest"
+        CurrentLoopSubroutine := "ManualPPRZ"
         SavedLoopSubroutine := "LoopSoloGarry"
         SavedDetector := "GarryDetector"
         StopLoop := True

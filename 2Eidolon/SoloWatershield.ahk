@@ -1,3 +1,4 @@
+
 ShrineToClLow:
 	;SendInput {Ins}
 	DllCall("QueryPerformanceCounter", "Int64*", LastPerformanceCounter)
