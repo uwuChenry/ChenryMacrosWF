@@ -47,7 +47,7 @@ Return
 
 
 HeatCore:
-	Send, 4.689m
+	Send, 2.3m
 Return
 
 SearchCurrentSlot(){
@@ -92,11 +92,11 @@ SearchCurrentSlot(){
 
 bone:
 ;SendInput {1}
-lSleep(30)
-SendInput {RButton}
-lSleep(30)
+; lSleep(30)
+; SendInput {RButton}
+; lSleep(30)
 SendInput {4}
-lSleep(30)
+lSleep(70)
 SendInput {RButton}
 lSleep(100)
 SendInput {f}
@@ -120,20 +120,20 @@ lSleep(60)
 SendInput {LButton}
 lSleep(60)
 SendInput {e}
-; lSleep(60)
+lSleep(60)
 ; SendInput {1}
 ; lSleep(60)
-; ;SendInput {RButton}
-; lSleep(550)
-; SendInput {r}
-; lSleep(60)
 ; SendInput {RButton}
-; lSleep(60)
-; SendInput {4}
-; lSleep(60)
-; SendInput {LButton}
-; lSleep(160)
-; SendInput {3}
+lSleep(550)
+SendInput {r}
+lSleep(60)
+SendInput {RButton}
+lSleep(60)
+SendInput {4}
+lSleep(60)
+SendInput {LButton}
+lSleep(160)
+SendInput {3}
 Return
 
 testslot:
